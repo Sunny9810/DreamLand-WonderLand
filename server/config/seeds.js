@@ -64,4 +64,24 @@ db.once("open", async () => {
       quantity: 600,
     },
   ]);
+
+  console.log('products seeded');
+
+  await User.deleteMany();
+
+  await User.create({
+    firstName: 'Avani',
+    lastName: 'Jadeja',
+    email: 'avani@testmail.com',
+    password: 'password12345',
+    orders: [
+      {
+        products: [products[0]._id, products[0]._id, products[1]._id]
+      }
+    ]
+  });
+
+
+
+
 });
