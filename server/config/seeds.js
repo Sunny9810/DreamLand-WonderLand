@@ -7,6 +7,7 @@ db.once('open', async () => {
   const categories = await Category.insertMany([
     { name: 'Baby' },
     { name: 'Kids' },
-    { name: 'Grown-Ups' },
+    { name: 'Grown-Ups' }
    
   ]);
+});
