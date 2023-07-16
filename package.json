@@ -1,5 +1,5 @@
 {
-  "name": "PROJECT-3",
+  "name": "project-3",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -12,12 +12,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "bootstrap": "^5.3.0",
-    "express": "^4.16.4",
-    "react-bootstrap": "^2.8.0"
-  },
   "dependencies": {
-    "apollo-server-express": "^3.12.0"
+    "apollo-server-express": "^3.12.0",
+    "bootstrap": "^5.3.0",
+    "concurrently": "^8.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^9.0.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "^2.8.0",
+    "react-dom": "^17.0.2"
   }
 }
