@@ -1,0 +1,92 @@
+.flipbook-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .page1 {
+    background-image: url(../assets/images/1-left.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  
+  .page2 {
+    background-image: url(../assets/images/1-right.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page3 {
+    background-image: url(../assets/images/3-left.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  
+  .page4 {
+    background-image: url(../assets/images/3-right.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page5 {
+    background-image: url(../assets/images/10-left.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page6 {
+    background-image: url(../assets/images/10-right.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page7 {
+    background-image: url(../assets/images/13-left.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page8 {
+    background-image: url(../assets/images/13-right.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  a {
+    color: #3b7f96; /* Text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  a:hover {
+    color: #ff0000; /* Text color on hover */
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  a:visited {
+    color: #6a82a1; /* Text color for visited links */
+  }
+  
+  a:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  
