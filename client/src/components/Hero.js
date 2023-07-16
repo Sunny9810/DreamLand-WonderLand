@@ -1,17 +1,17 @@
 import React from "react";
 import Container from 'react-bootstrap/Container'
-
-
-
 import HTMLFlipBook from "react-pageflip";
+import Card from 'react-bootstrap/Card'
 
 export default function MyBook() {
+
+    
   return (
-    <Container>
+    <Card>
     <div className="App">
       <span>
         <div className="">
-          <HTMLFlipBook width={200} height={500} size="stretch">
+          <HTMLFlipBook width={200} height={200} size="stretch" >
             <div className="page1">
               <h1>Jammies</h1>
               <p>Organic Jammies</p>
@@ -40,6 +40,6 @@ export default function MyBook() {
         </div>
       </span>
     </div>
-    </Container>
+    </Card>
   );
 }
