@@ -1,0 +1,69 @@
+.flipbook-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .page1 {
+    background-image: url(../assets/images/nightscene1.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  
+  .page2 {
+    background-image: url(../assets/images/nightscene2.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page3 {
+    background-image: url(../assets/images/nightscene1.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  
+  .page4 {
+    background-image: url(../assets/images/nightscene2.png);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  .page5 {
+    background-image: url(../assets/images/onesie.jpg);
+    background-size: cover;
+    font-size: 30px;
+    background-repeat: no-repeat;
+    font-size: 30px;
+    color: antiquewhite;
+  }
+  
+  a {
+    color: #3b7f96; /* Text color */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  a:hover {
+    color: #ff0000; /* Text color on hover */
+    text-decoration: underline; /* Add underline on hover */
+  }
+  
+  a:visited {
+    color: #a16aa1; /* Text color for visited links */
+  }
+  
+  a:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  
