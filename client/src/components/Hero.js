@@ -7,6 +7,7 @@ export default function MyBook() {
 
     
   return (
+    <Container>
     <Card>
     <div className="App">
       <span>
@@ -41,5 +42,6 @@ export default function MyBook() {
       </span>
     </div>
     </Card>
+    </Container>
   );
 }
