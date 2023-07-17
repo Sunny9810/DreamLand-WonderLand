@@ -4,10 +4,14 @@ const { Schema } = mongoose;
 
 const categorySchema = new Schema({
   name: {
-    sizes: {
-      type: [String],
-    },
+    type: String,
+    required: true,
+    trim: true
   },
+  sizes: {
+    type: [String],
+    required: true
+  }
 });
 
 const Category = mongoose.model('Category', categorySchema);
