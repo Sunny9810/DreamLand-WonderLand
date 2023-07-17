@@ -6,7 +6,7 @@
   }
   
   .page1 {
-    background-image: url(/client/public/images/1-left.png);
+    background-image: url(/public/images/1-left.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -15,7 +15,7 @@
   }
   
   .page2 {
-    background-image: url(/client/public/images/1-right.png);
+    background-image: url(/public/images/1-right.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -23,7 +23,7 @@
     color: antiquewhite;
   }
   .page3 {
-    background-image: url(/client/public/images/3-left.png);
+    background-image: url(/public/images/3-left.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -32,7 +32,7 @@
   }
   
   .page4 {
-    background-image: url(/client/public/images/3-right.png);
+    background-image: url(/public/images/3-right.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -40,7 +40,7 @@
     color: antiquewhite;
   }
   .page5 {
-    background-image: url(/client/public/images/10-left.png);
+    background-image: url(/public/images/10-left.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -48,7 +48,7 @@
     color: antiquewhite;
   }
   .page6 {
-    background-image: url(/client/public/images/10-right.png);
+    background-image: url(/public/images/10-right.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@
     color: antiquewhite;
   }
   .page7 {
-    background-image: url(/client/public/images/13-left.png);
+    background-image: url(/public/images/13-left.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
@@ -64,7 +64,7 @@
     color: antiquewhite;
   }
   .page8 {
-    background-image: url(/client/public/images/13-right.png);
+    background-image: url(/public/images/13-right.png);
     background-size: cover;
     font-size: 30px;
     background-repeat: no-repeat;
