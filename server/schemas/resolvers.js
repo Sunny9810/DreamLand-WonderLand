@@ -1,12 +1,17 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Category, Order } = require('../models');
-// const { signToken } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     categories: async () => {                             //* returns all catagories for populating the navbar (baby, kids, adult) 
       return await Category.find();
     },
+
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate('category');                //*  returns a single product that will carry the category object holding specific sizes available for the single product page
+    },
+
     products: async (parent, { category, name }) => {         //* returns all products, or if args are provided products matching a category or a product name
       const params = {};                                        //* achieved by this empty object, if empty there are no params/arguments so all products will be returned
 
@@ -22,9 +27,7 @@ const resolvers = {
 
       return await Product.find(params).populate('category');                //* the query will return a array of product documents with the category object embedded, the category holds sizes available
     },
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');                //*  returns a single product that will carry the category object holding specific sizes available for the single product page
-    },
+    
     user: async (parent, args, context) => {                                //* context is how we will access the current authenticate/logged in user 
       if (context.user) {
         const user = await User.findById(context.user._id).populate({       //* the user will be found and will populate each order with with products and every product with its category data
