@@ -8,7 +8,7 @@ import MyBook from './components/Hero';
 function App() {
   return (
     <div>
-      <Header />
+      <Navbar />
       <MyBook />
       <Footer />
       </div>

@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Footer = () => {
-  return (
-    <footer style={footerStyle}>
-      <p>This is a footer for the website.</p>
-    </footer>
-  );
-};
-
-const footerStyle = {
+const styles = {
   backgroundColor: '#333',
   color: '#fff',
-  textAlign: 'center',
-  padding: '1rem',
-};
+  padding: '1rem'
+}
 
-export default Footer;
+export default function Footer() {
+  return (
+    <footer style={styles} classname="footer">
+      <p>"This is a footer for the website."</p>
+    </footer>
+  );
+}
