@@ -1,3 +1,4 @@
+// import react
 import React from "react";
 
 function Jumbotron({ children }) {
