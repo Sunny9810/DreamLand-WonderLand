@@ -1,63 +1,151 @@
-const { AuthenticationError } = require('apollo-server-express');
-const { User, Product, Category, Order } = require('../models');
-const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
+const { User, Product, Category, Order } = require("../models");
+const { signToken } = require("../utils/auth");
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
   Query: {
-    categories: async () => {                             //* returns all catagories for populating the navbar (baby, kids, adult) 
+    categories: async () => {
       return await Category.find();
     },
+    products: async (parent, { category, name }) => {
+      const params = {};
 
-    product: async (parent, { _id }) => {
-      return await Product.findById(_id).populate('category');                //*  returns a single product that will carry the category object holding specific sizes available for the single product page
-    },
-
-    products: async (parent, { category, name }) => {         //* returns all products, or if args are provided products matching a category or a product name
-      const params = {};                                        //* achieved by this empty object, if empty there are no params/arguments so all products will be returned
-
-      if (category) {                                         //* ex. a navlink to baby is clicked, dispatching a updatecategory action that will update the current category in the global state
-        params.category = category;                               //* to the payload with the category.id held in the link/buttons unique key (<link key=category.id /> )
+      if (category) {
+        params.category = category;
       }
 
-      if (name) {                                             //* ex. in search bar the string can be passed as the name param for the query and return matching products with that name
+      if (name) {
         params.name = {
-          $regex: name
+          $regex: name,
         };
       }
 
-      return await Product.find(params).populate('category');                //* the query will return a array of product documents with the category object embedded, the category holds sizes available
+      return await Product.find(params).populate("category");
     },
-    
-    user: async (parent, args, context) => {                                //* context is how we will access the current authenticate/logged in user 
+    product: async (parent, { _id }) => {
+      return await Product.findById(_id).populate("category");
+    },
+    user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({       //* the user will be found and will populate each order with with products and every product with its category data
-          path: 'orders.products',
-          populate: 'category'
+        const user = await User.findById(context.user._id).populate({
+          path: "orders.products",
+          populate: "category",
         });
 
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);        //* sorts orders in descending order
+        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
-        return user;                                                        //* returns user object with all info related to them in nested objects
+        return user;
       }
 
-      throw new AuthenticationError('Please log in');
+      throw new AuthenticationError("Not logged in");
     },
-    order: async (parent, { _id }, context) => {                            //* returns a specific order but instead of going into the order collection
-      if (context.user) {                                                     //* we take in the order _id as a argument and the context containing the logged in user info
-        const user = await User.findById(context.user._id).populate({           //* we find the logged in user and pull all their data assigning it to the user const
-          path: 'orders.products',
-          populate: 'category'
+    order: async (parent, { _id }, context) => {
+      if (context.user) {
+        const user = await User.findById(context.user._id).populate({
+          path: "orders.products",
+          populate: "category",
         });
 
-        return user.orders.id(_id);                                           //* then return the data for the user order where the id field matches _id argument (using the ".id(_id)" mongoose method)
+        return user.orders.id(_id);
       }
 
-      throw new AuthenticationError('Log in to view orders');
+      throw new AuthenticationError("Not logged in");
+    },
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = new Order({ products: args.products });
+      const line_items = [];
+
+      const { products } = await order.populate("products");
+
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          images: [`${url}/images/${products[i].image}`],
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
+          currency: "usd",
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: 1,
+        });
+      }
+
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`,
+      });
+
+      return { session: session.id };
     },
   },
   Mutation: {
-    
-  }
+    addUser: async (parent, args) => {
+      const user = await User.create(args);
+      const token = signToken(user);
+
+      return { token, user };
+    },
+    addOrder: async (parent, { products }, context) => {
+      console.log(context);
+      if (context.user) {
+        const order = new Order({ products });
+
+        await User.findByIdAndUpdate(context.user._id, {
+          $push: { orders: order },
+        });
+
+        return order;
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    updateUser: async (parent, args, context) => {
+      if (context.user) {
+        return await User.findByIdAndUpdate(context.user._id, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
+    updateProduct: async (parent, { _id, quantity }) => {
+      const decrement = Math.abs(quantity) * -1;
+
+      return await Product.findByIdAndUpdate(
+        _id,
+        { $inc: { quantity: decrement } },
+        { new: true }
+      );
+    },
+    login: async (parent, { email, password }) => {
+      const user = await User.findOne({ email });
+
+      if (!user) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect credentials");
+      }
+
+      const token = signToken(user);
+
+      return { token, user };
+    },
+  },
 };
 
 module.exports = resolvers;
