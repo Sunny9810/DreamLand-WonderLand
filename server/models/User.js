@@ -28,7 +28,7 @@ const userSchema = new Schema({
   orders: [Order.schema]
 });
 
-// pre save middle-ware that will hash password on modify of password field or creation of user
+// set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
@@ -38,7 +38,7 @@ userSchema.pre('save', async function(next) {
   next();
 });
 
-// user method to check password against hashed password for match
+// compare the incoming password with the hashed password
 userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
