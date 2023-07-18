@@ -1,5 +1,7 @@
+// import react
 import React from "react";
 
+// funcation jumbotron
 function Jumbotron({ children }) {
   return (
     <div
