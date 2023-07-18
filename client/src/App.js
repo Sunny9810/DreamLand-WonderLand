@@ -1,25 +1,63 @@
 import React from "react";
-import './App.css';
-import MyBook from './components/Hero';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { Provider } from "react-redux";
+import store from "./utils/store"
 
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min.js";
-// import 'font-awesome/css/font-awesome.min.css';
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
+import NoMatch from "./pages/NoMatch";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Nav from "./components/Nav";
+import Success from "./pages/Success";
+import OrderHistory from "./pages/OrderHistory";
 
-// import './components/style.css'; // Add this line to import the style.css file
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
 
-import Homepage from'./pages/Homepage';
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
 
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-     <MyBook/>,
-     <Homepage/>
-    //  <Routes>
-    //         <Route path="/" element={<Home />} />
-    //         </Routes>
-    
-
+    <ApolloProvider client={client}>
+      <Router>
+        <div>
+          <Provider store={store}>
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/success" element={<Success />} />
+              <Route path="/orderHistory" element={<OrderHistory />} />
+              <Route path="/products/:id" element={<Detail />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+          </Provider>
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
