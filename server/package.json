@@ -1,5 +1,5 @@
 {
-  "name": "DreamLand-WonderLand",
+  "name": "mern-server",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -17,7 +17,8 @@
     "express": "^4.17.2",
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^7.0.2"
+    "mongoose": "^7.0.2",
+    "stripe": "^8.67.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
