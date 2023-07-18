@@ -1,5 +1,4 @@
 import React from 'react';
-import '../App.css';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 
 export default function Nav() {
