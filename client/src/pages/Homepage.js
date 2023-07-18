@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import MyBook from '../components/Hero';
+import Nav from '../components/Navbar'
+
 
 const Homepage = () => {
   const [loginEmail, setLoginEmail] = useState('');
@@ -60,7 +62,9 @@ const Homepage = () => {
           <button type="submit">Sign up</button>
         </form>
         <div className="container">
+        <Nav />
       <MyBook />
+      
     </div>
    </div>
      </div>

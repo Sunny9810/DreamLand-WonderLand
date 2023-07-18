@@ -3,62 +3,74 @@ import Container from 'react-bootstrap/Container'
 import HTMLFlipBook from "react-pageflip";
 import Card from 'react-bootstrap/Card'
 import '../styles/hero.css'
+import lilBear from '../images/animals/lil-cutie.png'
 
 export default function MyBook() {
+  const numPages = 20; // Update this number to match the actual number of pages
 
-    
-    
+  const generatePageClass = (pageNumber) => {
+    return `page${pageNumber}`;
+  };
+
+  const generatePageContent = (pageNumber) => {
+    switch (pageNumber) {
+      case 1:
+        return (
+          <div className="page-content">
+            <h1>Organic Pajamas for the Family</h1>
+            <p>Treat this like a book and swipe or click the corners to turn the page</p>
+            {/* Add unique content */}
+            <p></p>
+            <a href="https://www.w3schools.com/css/css_padding.asp">Or go Straight to All Products</a>
+          </div>
+        );
+      case 2:
+        return (
+          <div className="">
+            <h1>Stars And Moon Collection</h1>
+            <p>Shop this Pattern</p>
+            <p>Click the bear to see details:</p>
+            {/* adding little bear cartoon that can be clicked on and redirected */}
+            <a href="https://codingbeautydev.com" target="_blank" rel="noreferrer" className="image-link">
+              <img src={lilBear} alt="cartoon bear" className="image" />
+            </a>
+            
+            
+       
+          </div>
+        );
+      // Add cases for other pages with their respective content
+
+      default:
+        return (
+          <div className="page-content">
+            <h1>Jammies</h1>
+            <p>Organic Jammies page {pageNumber}</p>
+            {/* Add unique content */}
+            <p>Default content for page {pageNumber}</p>
+            <a href="https://www.w3schools.com/css/css_padding.asp">Default link for page {pageNumber}</a>
+          </div>
+        );
+    }
+  };
+
   return (
-   <Container>
-    <Card>
-    <div className="App">
-      <span>
-        <div className="flipbook-container">
-          <HTMLFlipBook width={200} height={200} size="stretch"  >
-            <div className="page1 DemoPage" >
-              <h1>Jammies</h1>
-              <p>Organic Jammies page1</p>
-              {/* Add a link */}
-              <a href="https://rosebudsara.com">shameless self promotion while we figure out linking pages from here LOL</a>
-              
+    <Container>
+      <Card>
+        <div className="App">
+          <span>
+            <div className="flipbook-container">
+              <HTMLFlipBook width={200} height={200} size="stretch">
+                {[...Array(numPages)].map((_, index) => (
+                  <div className={`${generatePageClass(index + 1)} DemoPage`} key={index}>
+                    {generatePageContent(index + 1)}
+                  </div>
+                ))}
+              </HTMLFlipBook>
             </div>
-            <div className="page2 ">
-              <h1>More Jammies</h1>
-              <p>page 2 My Jammies</p>
-            </div>
-            <div className="page3">
-              <h1>Jammies Jammies all day long</h1>
-              <p>page 3More Jammies for family jammies</p>
-              {/* image  */}
-            </div>
-            <div className="page4">
-              <h1>Jammiese</h1>
-              <p>pagefour</p>
-            </div>
-            <div className="page5">
-              <h1>Page Flippiee</h1>
-              <p>Flippie Flip 5</p>
-            </div>
-            <div className="page6">
-              <h1>Jammiese</h1>
-              <p> 6 products will go on these pages then there will be another product inventory page when you scroll down</p>
-            </div>
-            <div className="page7">
-              <h1>Page Flippiee</h1>
-              <p>7 Flippie Flip</p>
-            </div>
-            <div className="page8">
-              <h1>Page Flippiee</h1>
-              <p>7 Flippie Flip</p>
-            </div>
-          </HTMLFlipBook>
+          </span>
         </div>
-      </span>
-    </div>
-
-    </Card>
-
+      </Card>
     </Container>
-  
   );
 }
