@@ -2,9 +2,10 @@ import React from "react";
 import Container from 'react-bootstrap/Container'
 import HTMLFlipBook from "react-pageflip";
 import Card from 'react-bootstrap/Card'
-import '../../styles/hero.css'
 import lilBear from '../../images/animals/lil-cutie.png'
-import 'bootstrap/dist/css/bootstrap.css';
+
+import './hero.css'
+
 
 
 
