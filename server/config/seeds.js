@@ -1,7 +1,7 @@
-const db = require("./connection");
-const { User, Product, Category } = require("../models");
+const db = require("./connection");  //* mongoose db import
+const { User, Product, Category } = require("../models");   //* importing models to create the data objects that will be inserted in the live db
 
-db.once("open", async () => {
+db.once("open", async () => {   //! db.once listens for the connection to the db to open and executes the embedded logic
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
@@ -13,7 +13,8 @@ db.once("open", async () => {
       name: "Kids(2-14Y)",
       size: ["2-3", "4-5", "6-7", "8-9", "10", "12", "14"],
     },
-    { name: "Grownups(S-XXL)", size: ["XS", "S", "M", "L", "XL", "XXL"] },
+    { name: "Grownups(S-XXL)", 
+    size: ["XS", "S", "M", "L", "XL", "XXL"] },
   ]);
 
   console.log("categories seeded");
