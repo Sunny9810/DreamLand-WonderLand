@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import './styles/Signup.css'
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -32,9 +33,9 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
+      <Link to="/login" className="go-to-login-link">← Go to Login</Link>
 
-      <h2>Signup</h2>
+      <h2 className="signup-heading">Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
@@ -43,6 +44,7 @@ function Signup(props) {
             name="firstName"
             type="firstName"
             id="firstName"
+            className="input-field"
             onChange={handleChange}
           />
         </div>
@@ -53,6 +55,7 @@ function Signup(props) {
             name="lastName"
             type="lastName"
             id="lastName"
+            className="input-field"
             onChange={handleChange}
           />
         </div>
@@ -63,6 +66,7 @@ function Signup(props) {
             name="email"
             type="email"
             id="email"
+            className="input-field"
             onChange={handleChange}
           />
         </div>
@@ -73,11 +77,12 @@ function Signup(props) {
             name="password"
             type="password"
             id="pwd"
+            className="input-field"
             onChange={handleChange}
           />
         </div>
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <button type="submit" className='submit-btn'>Submit</button>
         </div>
       </form>
     </div>
