@@ -1,7 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-
+import Logo from "../../images/animals/lil-cutie.png"
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
@@ -37,7 +37,7 @@ function Nav() {
       <h1>
         <Link to="/">
           <span role="img" aria-label="shopping bag">
-            🛍️😀
+            <img src={Logo} width={100} height={100} />
           </span>
           -Dreamland
         </Link>

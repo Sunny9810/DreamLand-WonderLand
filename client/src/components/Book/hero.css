@@ -1,0 +1,118 @@
+.flipbook-container {
+  display: flex;
+  justify-content: center;
+  padding: 0px 25px;
+  align-items: center;
+  overflow: hidden;
+}
+
+[class^="page"] {
+  position: relative;
+  background-size: cover;
+  font-size: 30px;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: antiquewhite;
+}
+
+.page1 {
+  background-image: url(/public/images/1-left.png);
+
+}
+
+.page2 {
+  background-image: url(/public/images/1-left.png);
+
+}
+
+.page3 {
+  background-image: url(/public/images/1-right.png);
+
+}
+
+.page4 {
+  background-image: url(/public/images/2-left.png);
+
+}
+
+.page5 {
+  background-image: url(/public/images/2-right.png);
+
+}
+
+.page6 {
+  background-image: url(/public/images/3-left.png);
+
+}
+
+.page7 {
+  background-image: url(/public/images/3-right.png);
+  ;
+}
+
+.page8 {
+  background-image: url(/public/images/5-left.png);
+
+}
+
+.page9 {
+  background-image: url(/public/images/5-right.png);
+
+}
+
+.page-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  /* Set the background color with transparency */
+  padding: 20px;
+}
+
+.page-content h1 {
+  margin-bottom: 10px;
+  color: antiquewhite;
+}
+
+.page-content p {
+  color: antiquewhite;
+}
+
+.image-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 12em; 
+}
+
+.image {
+  width: 400px; /* Adjust the width as needed */
+  height: 400px; /* Adjust the height as needed */
+}
+
+
+a {
+  color: #3b7f96;
+  /* Text color */
+  text-decoration: none;
+  /* Remove underline */
+}
+
+a:hover {
+  color: #ff0000;
+  /* Text color on hover */
+  text-decoration: underline;
+  /* Add underline on hover */
+}
+
+a:visited {
+  color: #6a82a1;
+  /* Text color for visited links */
+}
+
+a:focus {
+  outline: none;
+  /* Remove focus outline */
+}
