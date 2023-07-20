@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // import MyBook from '../components/Book/Hero';
-import Nav from '../components/Nav';
+// import Nav from '../components/Nav';
 import './styles/homepage.css'
 
 const Homepage = () => {
@@ -43,7 +43,7 @@ const Homepage = () => {
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
-          <button type="submit" className='lbtn'>Login</button>
+          <button type="submit" className='lbtn'>Login</button> 
         </form>
       </div>
       <div>
@@ -66,7 +66,7 @@ const Homepage = () => {
           <button type="submit" className='btn'>Sign up</button>
         </form>
         <div className="container">
-        <Nav />
+        {/* <Nav /> */}
       {/* <MyBook /> */}
       
     </div>
