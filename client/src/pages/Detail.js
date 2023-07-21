@@ -32,6 +32,17 @@ function Detail() {
   const { products, cart } = state;
 
   const [currentSize, setCurrentSize] = useState("");
+  
+  const [listing, setListing] = useState("")
+
+  const isCartItemMatch = (cartItem) => {
+    return cartItem._id === currentProduct._id && cartItem.size === currentSize;
+  };
+
+
+//  const [quantityVisable, setQuantityVisible] = useState(false)
+
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     // already in global store
@@ -72,18 +83,18 @@ function Detail() {
         type: UPDATE_CART_QUANTITY,
         _id: id,
         size: currentSize,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
       idbPromise("cart", "put", {
         ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1, size: currentSize },
+        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
     }
   };
 
@@ -91,12 +102,17 @@ function Detail() {
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
+      size: currentSize
     });
 
     idbPromise("cart", "delete", { ...currentProduct });
   };
+
   const onChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
+
+    setQuantity(parseInt(value, 10));
+
     if (value === "0") {
       dispatch({
         type: REMOVE_FROM_CART,
@@ -119,12 +135,17 @@ function Detail() {
   const onClick = (e) => {
     const value = e.target.id;
     console.log(value);
+    
 
+//    setQuantityVisible(!quantityVisable)
     setCurrentSize(value);
+    setListing(`${value}-${currentProduct._id}`)
+
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
+      listing: listing
     });
   };
   return (
@@ -151,7 +172,7 @@ function Detail() {
                 <img src={`/images/${currentImage}`} alt={currentImage} />
               </div>
             </div>
-            <div class="productRight">
+            <div className="productRight">
               <Link to="/">← Back to Products</Link>
 
               <h2>{currentProduct.name}</h2>
@@ -169,15 +190,21 @@ function Detail() {
                 <br />
                 <br />
                 <input
+//                  disabled={quantityVisable || cart.some((item) => item.listing === listing)}
                   type="number"
                   placeholder="1"
-                  // value={item.purchaseQuantity}
+                  min = '1'
+                  value = {quantity}
                   onChange={onChange}
+                  
                 />
                 <br />
-                <button onClick={addToCart}>Add to Cart</button>
+                <button 
+                onClick={addToCart}>Add to Cart</button>
                 <button
-                  disabled={!cart.find((p) => p._id === currentProduct._id)}
+                    //! disabled is false if the cart item matches currentProduct
+                    //! meaning it will display
+                  disabled={!cart.some(isCartItemMatch)}
                   onClick={removeFromCart}
                 >
                   Remove from Cart
