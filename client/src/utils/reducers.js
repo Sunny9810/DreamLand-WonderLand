@@ -10,7 +10,7 @@ import {
     TOGGLE_CART,
   } from "./actions";
   
-  //  added initalState for all variables with inital values
+    //! initial Global state defined below
   const initialState = {
     products: [],
     cart: [],
@@ -18,6 +18,7 @@ import {
     categories: [],
     currentCategory: "",
     size: "",
+    quantity: 1
   };
   
   // The reducer is a function that accepts the current state and an action. It returns a new state based on that action.

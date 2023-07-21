@@ -70,8 +70,8 @@ const Homepage = () => {
       {/* <MyBook /> */}
       
     </div>
-   </div>
-     </div>
+      </div>
+    </div>
   )
 }
 

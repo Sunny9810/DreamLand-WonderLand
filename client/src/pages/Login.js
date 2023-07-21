@@ -6,14 +6,23 @@ import Auth from '../utils/auth';
 import './styles/Login.css'
 
 function Login(props) {
+    //! intital local state and its update function are declared with useState hook
   const [formState, setFormState] = useState({ email: '', password: '' });
+    //! useMutation points toward LOGIN mutation, with login function deconstructed
   const [login, { error }] = useMutation(LOGIN);
 
+    //! submit form will start "login" mutation function
+    //! sending the required variables from the local formState
+    //! the mutationResponse will extract the token value
+    //! and pass it to Auth.login function that saves it in localStorage
+    //! and reroutes client to '/' home
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+        variables: { 
+          email: formState.email, 
+          password: formState.password },
       });
       const token = mutationResponse.data.login.token;
       Auth.login(token);
@@ -22,6 +31,8 @@ function Login(props) {
     }
   };
 
+    //! this function changes the values in formState 
+    //! based on what input field is being typed in
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

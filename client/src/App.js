@@ -5,7 +5,6 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  from,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { Provider } from "react-redux";
@@ -24,7 +23,7 @@ import OrderHistory from "./pages/OrderHistory";
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
-
+  //! set up token retrieval from localStorage to add to request headers
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -34,12 +33,17 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
+  //! the apolloclient connection is established for the client side to make request to GraphQL
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
+  //! the whole app is wrapped in the apolloclient allowing all components to connect with the graphQL database
+    //! router wrap to handle routing
+    //! Provider store wrap to allow all components access to the global state defined in the "store.js"
+    //! Nav wrap to provide navigation functionality
+    //! Routes component has various Route components all with specific paths and corresponding component to render
 function App() {
   return (
     <ApolloProvider client={client}>
