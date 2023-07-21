@@ -2,7 +2,9 @@ import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import Logo from "../../images/animals/lil-cutie.png"
+
 function Nav() {
+    //! the function below will render the conditionaly buttons for navigation whether the user is logged in or not
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -31,7 +33,7 @@ function Nav() {
       );
     }
   }
-
+    //! below is the nav bar that will always render containing the site title link and the logo , it calls the showNavigation function which conditinally renders nav buttons 
   return (
     <header className="flex-row px-1">
       <h1>
@@ -43,7 +45,7 @@ function Nav() {
         </Link>
       </h1>
   
-        <nav id="login">{showNavigation()}</nav>
+      <nav id="login">{showNavigation()}</nav>
     
     </header>
   );

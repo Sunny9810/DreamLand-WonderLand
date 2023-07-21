@@ -69,3 +69,15 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
+
+//* password missing from User type explanation:
+  //! the password field is excluded from the User typedef because that would
+  //! allow the password to be queried when User is requested, exposing the password.
+  //! Instead we set up the mutations to accept a password field from client request,
+  //! allowing the backend to work with it to create,update or login user.
+
+//* Query and Mutation type structure:
+  //! using addUser as a example
+  //! we give the mutation a name "addUser"
+  //! define arguments it accepts "(firstName: String!..etc)"
+  //! then define the result structure ": Auth"
