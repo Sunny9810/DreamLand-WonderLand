@@ -1,10 +1,10 @@
 :root {
   --primary: #232f3e;
-  --secondary: #6083b1;
+  --secondary: #6f7781;
   --tertiary: #71878a;
   --light: #fafafa;
   --dark: #272f32;
-  --error: rgb(1, 228, 179);
+  --error: rgba(3, 38, 78, 0.952);
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
@@ -101,7 +101,7 @@ button {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 2rem;
   border: none;
   outline: none;
   cursor: pointer;
