@@ -1,5 +1,5 @@
 import React from "react";
-import Jumbotron from "../components/Jumbotron";
+import Jumbotron from "../components/jumbotron";
 
 const NoMatch = () => {
   return (
