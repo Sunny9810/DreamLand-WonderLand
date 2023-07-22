@@ -42,39 +42,38 @@ import {
           ...state,
           cart: [...state.cart, ...action.products],
         };
-      // Returns a copy of state, sets the cartOpen to true and maps through the items in the cart.
-      // If the item's `id` matches the `id` that was provided in the action.payload, we update the purchase quantity.
+        
+        //! checks for item id and item size
       case UPDATE_CART_QUANTITY:
         return {
           ...state,
           cartOpen: true,
           cart: state.cart.map((product) => {
             if (action._id === product._id && action.size === product.size) {
-              product.purchaseQuantity = action.purchaseQuantity;
+              return {
+                ...product,
+                purchaseQuantity: action.purchaseQuantity,
+              };
             }
             return product;
           }),
         };
-  
-      // First we iterate through each item in the cart and check to see if the `product._id` matches the `action._id`
-      // If so, we remove it from our cart and set the updated state to a variable called `newState`
+        
+        //! remove from cart checks for size and id
       case REMOVE_FROM_CART:
-        let newState = state.cart.filter((product) => {
-          return product._id !== action._id;
-        });
-  
-        // Then we return a copy of state and check to see if the cart is empty.
-        // If not, we set the cartOpen status to  `true`. Then we return an updated cart array set to the value of `newState`.
         return {
           ...state,
-          cartOpen: newState.length > 0,
-          cart: newState,
+          cartOpen: true,
+          cart: state.cart.filter((item) => {
+            // Keep the cart item in the cart array if either _id or size doesn't match the action's values
+            return !(item._id === action._id && item.size === action.size);
+          }),
         };
   
       case CLEAR_CART:
         return {
           ...state,
-          cartOpen: false,
+          //! cartOpen: false,
           cart: [],
         };
   
