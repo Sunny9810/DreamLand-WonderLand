@@ -1,0 +1,68 @@
+/* CSS for CartItem component */
+.cart-item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid blue;
+    padding: 15px;
+  }
+  
+  .cart-item__image img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .cart-item__info {
+    flex: 1;
+    margin-left: 25px;
+  }
+  
+  .cart-item__name-price {
+    font-weight: bold;
+    font-size: 19px;
+   font-family: wavy;
+   padding: 5px;
+  }
+  
+  .cart-item__size {
+    font-size: 24px;
+    color: #c9c0c0;
+    font-family: wavy;
+  }
+  
+  .cart-item__quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    
+    
+  }
+  
+  .cart-item__quantity span {
+    margin-right: 5px;
+    font-size: 14px;
+    font-size: 19px;
+    font-family: wavy;
+  }
+  
+  .cart-item__quantity input {
+    width: 50px;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
+  }
+  
+  /* .cart-item__delete {
+    font-size: 200px;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #e74c3c;
+  }
+  
+  .cart-item__delete:hover {
+    color: #c0392b;
+  } */
+  
+  
+  
+  
