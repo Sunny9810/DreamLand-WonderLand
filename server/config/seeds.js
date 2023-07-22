@@ -8,6 +8,7 @@ db.once("open", async () => {   //! db.once listens for the connection to the db
     {
       name: "Baby(0-24M)",
       size: ["NB", "0-3", "3-6", "6-9", "9-12", "12-18", "18-24"],
+      
     },
     {
       name: "Kids(2-14Y)",

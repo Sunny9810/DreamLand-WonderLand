@@ -7,7 +7,11 @@ import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
-import './productList.css'
+import "./productList.css";
+import CategoryMenu from "../CategoryMenu";
+import { Link } from "react-router-dom";
+import DreamLogo from "../../images/DreamLogo.png";
+
 
 function ProductList() {
   // create dispatch from useDispatch()
@@ -49,31 +53,38 @@ function ProductList() {
   }
 
   return (
-
     <main>
-    <div className="pg-header">
-    
-      <h2>Our Products:</h2>
+      <div className="pg-header">
+      <img style={{ height:200}} src={ DreamLogo} alt="dreamland wonderland logo"/>
+        <h2>Our Products:</h2>
+        <div className="container">
+        <Link to="/">
+          <span role="img" aria-label="">
+            
+          </span>
+        </Link>
+        </div>
+        <CategoryMenu />
       </div>
       <div>
-      {state.products.length ? (
-        <div className="flex-row">
-          {filterProducts().map((product) => (
-            <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-            />
-          ))}
-        </div>
-      ) : (
-        <h3>You haven't added any products yet!</h3>
-      )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
-    </div>
+        {state.products.length ? (
+          <div className="flex-row">
+            {filterProducts().map((product) => (
+              <ProductItem
+                key={product._id}
+                _id={product._id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            ))}
+          </div>
+        ) : (
+          <h3>You haven't added any products yet!</h3>
+        )}
+        {loading ? <img src={spinner} alt="loading" /> : null}
+      </div>
     </main>
   );
 }

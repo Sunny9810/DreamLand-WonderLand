@@ -1,7 +1,9 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import Logo from "../../images/animals/lil-cutie.png"
+
+import DreamLogo from '../../images/DreamLogo.png'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Nav() {
     //! the function below will render the conditionaly buttons for navigation whether the user is logged in or not
@@ -34,21 +36,22 @@ function Nav() {
     }
   }
     //! below is the nav bar that will always render containing the site title link and the logo , it calls the showNavigation function which conditinally renders nav buttons 
-  return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">
-            <img src={Logo} width={100} height={100} />
-          </span>
-          -Dreamland
-        </Link>
-      </h1>
-  
-      <nav id="login">{showNavigation()}</nav>
+ 
+    return (
+      <header className="flex-row px-5">
+        <h1>
+          <Link to="/">
+            <span role="img" aria-label="">
+             <img style={{ height:100}} src={ DreamLogo} alt="dreamland wonderland logo"/>
+            </span>
+           
+          </Link>
+        </h1>
     
-    </header>
-  );
-}
+          <nav id="login">{showNavigation()}</nav>
+      
+      </header>
+    );
+  }
 
 export default Nav;

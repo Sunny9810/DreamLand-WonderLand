@@ -1,6 +1,6 @@
 :root {
   --primary: #232f3e;
-  --secondary: #6f7781;
+  --secondary: #518fc9;
   --tertiary: #71878a;
   --light: #fafafa;
   --dark: #272f32;
@@ -121,6 +121,7 @@ button[disabled] {
 img {
   max-width: 100%;
 }
+
 
 span[role="img"] {
   cursor: default;

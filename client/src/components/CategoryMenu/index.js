@@ -6,6 +6,7 @@ import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from "../../utils/actions"
 import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 
+
 function CategoryMenu() {
   // create disptach from useDispatch()
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
+    <div className="products-row">
+    
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
         <button
@@ -52,6 +54,7 @@ function CategoryMenu() {
           }}
         >
           {item.name}
+          
         </button>
       ))}
     </div>

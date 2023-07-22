@@ -1,5 +1,5 @@
 body {
-    background-color: #9cabc9;
+    background-color: #3f4244;
   
     color:#282c34;
   
@@ -8,13 +8,13 @@ body {
   a {
     text-decoration: none;
   }
-/*   
+  
   main {
-    background-color: rgb(221, 138, 138); 
+    background-color: rgba(12, 20, 65, 0.397); 
     padding: 2rem;
   
   
-  } */
+  }
   
   main.content {
     padding-top: 2rem;
@@ -23,7 +23,7 @@ body {
   
   main .pg-header {
     padding: 60px 0;
-    background: white;
+    background: rgba(29, 28, 28, 0.185);
   
   }
   
