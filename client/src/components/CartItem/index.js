@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import './cartitem.css';
 
 const CartItem = ({ item }) => {
   // create dispatch object from useDispatch()
@@ -37,19 +38,18 @@ const CartItem = ({ item }) => {
   };
 
   return (
-    <div className="flex-row">
-      <div>
+    <div className='cart-item'>
+      <div calssName='cart-item__image'>
         <img src={`/images/${item.image[0]}`} alt="" />
       </div>
-      <div>
-        <div>
+      <div className='cart-item__info'>
+        <div className="cart-item__name-price">
           {item.name}, ${item.price}
         </div>
-        <div>
+        <div className="cart-item__size" >
           Size :{item.size}
-          {/* console.log({size}); */}
         </div>
-        <div>
+        <div className="cart-item__quantity">
           <span>Qty:</span>
           <input
             type="number"
@@ -58,6 +58,7 @@ const CartItem = ({ item }) => {
             onChange={onChange}
           />
           <span
+          className="cart-item__delete"
             role="img"
             aria-label="trash"
             onClick={() => removeFromCart(item)}
