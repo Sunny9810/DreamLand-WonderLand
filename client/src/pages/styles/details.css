@@ -1,0 +1,50 @@
+body {
+    overflow: scroll;
+}
+
+button {font-size: 1rem;
+    text-decoration: none;
+    padding: 0.25rem 1rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 1px;
+    
+    background-color: rgb(217, 235, 232);
+}
+
+
+
+.card h2 {
+    font-family: "Bagel";
+}
+
+.card p {
+    background-color: rgba(247, 238, 238, 0.274);
+    font-family: 'Dosis';
+    font-size: 25px;
+}
+
+
+.back-link a {
+    font-family: 'Flameco-Regular';
+    font-size:2rem;
+    color:antiquewhite;
+    align-items:start;
+}
+
+.backlink a:visited {
+    color:rgb(24, 52, 63);
+}
+
+@media screen and (max-width: 768px) {
+    .card .container .product .img {
+      display: flex;
+      flex-direction: row;
+      align-items: center; /* Center items horizontally */
+    
+      width: 100%;
+      
+    }
+  }

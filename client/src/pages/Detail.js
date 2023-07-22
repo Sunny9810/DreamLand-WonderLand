@@ -14,6 +14,7 @@ import {
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import spinner from "../assets/spinner.gif";
+import './styles/details.css'
 
 function Detail() {
   // create disptach from useDispatch()
@@ -151,10 +152,21 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <div className="product">
-            <div className="productLeft">
-              <div className="images">
+        <div className="container" >
+          <div className="row product">
+            <div className="col">
+              
+            </div>
+            <div className="card">
+            <div className="container d-flex back-link">
+              <Link to="/">← Back to Products</Link>
+              </div>
+              <div className="container d-flex-col mx-auto" >
+                <img src={`/images/${currentImage}`} alt={currentImage} />
+                <div className="row d-flex-row d-mx-auto images" style={{width: 200}} >
+                <div className="row d-flex">
+                <div className="col d-flex">
+                
                 {currentProduct.image.map((i) => (
                   <img
                     src={`/images/${i}`}
@@ -167,13 +179,10 @@ function Detail() {
                   alt={currentProduct.image[0]}
                 />
                 ; */}
+                </div>
+                </div>
               </div>
-              <div className="mainimage">
-                <img src={`/images/${currentImage}`} alt={currentImage} />
               </div>
-            </div>
-            <div className="productRight">
-              <Link to="/">← Back to Products</Link>
 
               <h2>{currentProduct.name}</h2>
 
