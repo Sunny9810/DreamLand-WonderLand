@@ -14,6 +14,7 @@ import {
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import spinner from "../assets/spinner.gif";
+import './styles/details.css'
 
 function Detail() {
   // create disptach from useDispatch()
@@ -151,7 +152,7 @@ function Detail() {
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
+        <div className="container my-1" >
           <div className="product">
             <div className="productLeft">
               <div className="images">
@@ -168,11 +169,11 @@ function Detail() {
                 />
                 ; */}
               </div>
-              <div className="mainimage">
+              <div className="container mainimage">
                 <img src={`/images/${currentImage}`} alt={currentImage} />
               </div>
             </div>
-            <div className="productRight">
+            <div className="card">
               <Link to="/">← Back to Products</Link>
 
               <h2>{currentProduct.name}</h2>
