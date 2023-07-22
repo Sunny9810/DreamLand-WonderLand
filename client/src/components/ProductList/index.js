@@ -8,9 +8,12 @@ import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
 import "./productList.css";
+import 'bootstrap/dist/css/bootstrap.min.css'
 import CategoryMenu from "../CategoryMenu";
 import { Link } from "react-router-dom";
 import DreamLogo from "../../images/DreamLogo.png";
+
+
 
 
 function ProductList() {
@@ -58,7 +61,7 @@ function ProductList() {
     
       <img style={{ height:200}} src={ DreamLogo} alt="dreamland wonderland logo"/>
         <h2>Our Products:</h2>
-        <div className="container">
+        <div className="products-row">
         <Link to="/">
           <span role="img" aria-label="">
             
