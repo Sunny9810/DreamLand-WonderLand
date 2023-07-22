@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
-import Logo from "../../images/animals/lil-cutie.png"
+import { Navbar, Nav, NavDropdown, Container, Offcanvas, Button } from 'react-bootstrap';
+import Logo from "../../images/animals/lil-cutie.png";
 
 function MyNavbar() {
-    //! the function below will render the conditionaly buttons for navigation whether the user is logged in or not
+  const [showOffcanvas, setShowOffcanvas] = useState(false);
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -14,7 +15,6 @@ function MyNavbar() {
             <Link to="/orderHistory">Order History</Link>
           </li>
           <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
@@ -34,27 +34,31 @@ function MyNavbar() {
       );
     }
   }
-    //! below is the nav bar that will always render containing the site title link and the logo , it calls the showNavigation function which conditinally renders nav buttons 
+  const expand = false;
   return (
-  <Navbar collapseOnSelect fixed='top' expand='sm' bg='dark' variant='dark'>
-    <Container fluid>
+    <Navbar expand={expand} className="bg-body-tertiary mb-3" data-bs-theme="dark">
+      <Container fluid>
         <Navbar.Brand href="/">Dreamland Wonderland</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
-        <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
+        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+        <Navbar.Offcanvas
+          id={`offcanvasNavbar-expand-${expand}`}
+          aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+          placement="end"
+          data-bs-theme="dark"
+        >
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
+              Dreamland Wonderland
+            </Offcanvas.Title>
+          </Offcanvas.Header>
+          <Nav className="flex-column">
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Sizes" id="navbarScrollingDropdown" menuVariant="dark">
-              <NavDropdown.Item href="#action3">Baby</NavDropdown.Item>
+              <NavDropdown.Item href="#action3">Babies</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Kids</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Adults</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                All
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action5">All</NavDropdown.Item>
             </NavDropdown>
             <NavDropdown title="Account" id="navbarScrollingDropdown" menuVariant="dark">
               <NavDropdown.Item href="/signup">Sign-up</NavDropdown.Item>
@@ -63,23 +67,10 @@ function MyNavbar() {
               <NavDropdown.Item href="/orderHistory">Profile</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );
-} 
-    /*<header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="shopping bag">
-            <img src={Logo} width={100} height={100} />
-          </span>
-          -Dreamland
-        </Link>
-      </h1>
-  
-      <nav id="login">{showNavigation()}</nav>
-    
-    </header>*/
+}
 
 export default MyNavbar;
