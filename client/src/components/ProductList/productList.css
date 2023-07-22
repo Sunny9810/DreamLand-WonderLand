@@ -27,7 +27,9 @@ body {
     background: rgba(0, 0, 0, 0.473);
   
   }
-  
+  button {
+    border-radius: 20px;
+  }
   /* Breadcrumb */
   
   .breadcrumb a {
@@ -127,8 +129,9 @@ body {
     color:#02202c
   }
   
-  .card .btn-dark {
+  .card .button {
     font-weight: 600;
+    border-radius: 20px;
   }
   
   /* single product */
