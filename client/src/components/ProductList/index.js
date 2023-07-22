@@ -7,6 +7,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import spinner from "../../assets/spinner.gif";
+import './productList.css'
 
 function ProductList() {
   // create dispatch from useDispatch()
@@ -48,8 +49,13 @@ function ProductList() {
   }
 
   return (
-    <div className="my-2">
+
+    <main>
+    <div className="pg-header">
+    
       <h2>Our Products:</h2>
+      </div>
+      <div>
       {state.products.length ? (
         <div className="flex-row">
           {filterProducts().map((product) => (
@@ -68,6 +74,7 @@ function ProductList() {
       )}
       {loading ? <img src={spinner} alt="loading" /> : null}
     </div>
+    </main>
   );
 }
 
