@@ -8,7 +8,7 @@ import Auth from "../../utils/auth";
 // import react-redux
 import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
-import "./style.css";
+import "./cart.css";
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
@@ -79,7 +79,7 @@ const Cart = () => {
       <div className="close" onClick={toggleCart}>
         [close]
       </div>
-      <h2>Shopping Cart</h2>
+      <h2 className="shopping-cart">Shopping Cart</h2>
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
@@ -87,12 +87,12 @@ const Cart = () => {
           ))}
 
           <div className="flex-row space-between">
-            <strong>Total: ${calculateTotal()}</strong>
+            <strong className="total">Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Checkout</button>
             ) : (
-              <span>(log in to check out)</span>
+              <span className="checkout">(log in to check out)</span>
             )}
           </div>
         </div>
