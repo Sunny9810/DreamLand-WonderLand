@@ -192,7 +192,7 @@ function Detail() {
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
                 {currentProduct?.category?.size?.map((s) => (
-                  <button id={s} onClick={onClick}>
+                  <button className="d-btn" id={s} onClick={onClick}>
                     {s}
                   </button>
                 ))}
@@ -208,9 +208,9 @@ function Detail() {
                   
                 />
                 <br />
-                <button 
+                <button className="d-btn"
                 onClick={addToCart}>Add to Cart</button>
-                <button
+                <button className="d-btn"
                     //! disabled is false if the cart item matches currentProduct
                     //! meaning it will display
                   disabled={!cart.some(isCartItemMatch)}
