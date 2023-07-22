@@ -222,3 +222,62 @@ input:focus {
     width: 100%;
   }
 }
+/* custom fonts */
+@font-face {
+  font-family: 'DreamLined';
+  src: local('DreamLined'),
+  url('./fonts/TiltPrism-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Flamenco-Light';
+  src: local('Flamenco-light'),
+  url('./fonts/Flamenco-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Bagel';
+  src: local('Bagel'),
+  url('./fonts/BagelFatOne-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Flameco-Regular';
+  src: local('Flameco-Regular'),
+  url('./fonts/Flamenco-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'TiltPrism-Regular-Variable';
+  src: local('TiltPrism-Regular-Variable'),
+  url('./fonts/TiltPrism-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
+}
+
+
+@font-face {
+  font-family: 'TsukimiRounded-Bold';
+  src: local('TsukimiRounded-Bold'),
+  url('./fonts/TsukimiRounded-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'TsukimiRounded-Light';
+  src: local('TsukimiRounded-Light'),
+  url('./fonts/TsukimiRounded-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'TsukimiRounded-Medium';
+  src: local('TsukimiRounded-Medium'),
+  url('./fonts/TsukimiRounded-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'TsukimiRounded-Regular';
+  src: local('TsukimiRounded-Regular'),
+  url('./fonts/TsukimiRounded-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SquadaOne';
+  src: local('SquadaOne'),
+  url('./fonts/SquadaOne-Regular.ttf') format('truetype');
+}
