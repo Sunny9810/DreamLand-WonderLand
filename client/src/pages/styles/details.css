@@ -1,3 +1,7 @@
+body {
+    overflow: scroll;
+}
+
 button {font-size: 1rem;
     text-decoration: none;
     padding: 0.25rem 1rem;
@@ -10,9 +14,7 @@ button {font-size: 1rem;
     background-color: rgb(217, 235, 232);
 }
 
-/* .mainimage {
 
-} */
 
 .card h2 {
     font-family: "Bagel";
@@ -24,3 +26,25 @@ button {font-size: 1rem;
     font-size: 25px;
 }
 
+
+.back-link a {
+    font-family: 'Flameco-Regular';
+    font-size:2rem;
+    color:antiquewhite;
+    align-items:start;
+}
+
+.backlink a:visited {
+    color:rgb(24, 52, 63);
+}
+
+@media screen and (max-width: 768px) {
+    .card .container .product .img {
+      display: flex;
+      flex-direction: row;
+      align-items: center; /* Center items horizontally */
+    
+      width: 100%;
+      
+    }
+  }
