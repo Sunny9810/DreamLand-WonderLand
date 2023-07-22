@@ -1,7 +1,7 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 import Logo from "../../images/animals/lil-cutie.png"
 
 function MyNavbar() {
@@ -47,7 +47,7 @@ function MyNavbar() {
             navbarScroll
           >
             <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Sizes" id="navbarScrollingDropdown">
+            <NavDropdown title="Sizes" id="navbarScrollingDropdown" menuVariant="dark">
               <NavDropdown.Item href="#action3">Baby</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Kids</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Adults</NavDropdown.Item>
@@ -56,14 +56,13 @@ function MyNavbar() {
                 All
               </NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Account" id="navbarScrollingDropdown">
+            <NavDropdown title="Account" id="navbarScrollingDropdown" menuVariant="dark">
               <NavDropdown.Item href="/signup">Sign-up</NavDropdown.Item>
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/orderHistory">Profile</NavDropdown.Item>
             </NavDropdown>
           </Nav>
-   
         </Navbar.Collapse>
       </Container>
     </Navbar>
