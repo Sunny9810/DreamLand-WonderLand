@@ -26,8 +26,9 @@ db.once("open", async () => {
       name: "Topo",
       description:
         "Topography pattern to guide you through your Dreamland Wonderland.",
-      image: ["/Women/36.png", "pj.png", "pants.jpg"],
-      category: categories[0]._id,
+      image: ["/Women/36.png", "/patterns/23_1.jpg"],
+      category: categories[1]._id,
+
       price: 10,
       quantity: 500,
     },
@@ -43,7 +44,7 @@ db.once("open", async () => {
       name: "Sunrise",
       category: categories[1]._id,
       description: "Sun rise patterns for positive vibes",
-      image: ["/Kids/16.png",  "/patterns/24_1.jpg"],
+      image: ["/Kids/16.png", "/patterns/24_1.jpg"],
       price: 25,
       quantity: 600,
     },
@@ -55,7 +56,7 @@ db.once("open", async () => {
       price: 20,
       quantity: 600,
     },
-    
+
     {
       name: "Aurora",
       description: "Beautiful Aurora pattern based on Nature's wonders.",
