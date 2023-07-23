@@ -216,6 +216,14 @@ input:focus {
   color: var(--error);
 }
 
+.hover-effect:hover {
+  background: linear-gradient(45deg, rgba(29, 236, 197, 0.5), rgba(91, 14, 214, 0.5) 100%);
+}
+
+.nav-background{
+  background: linear-gradient(45deg, rgba(29, 236, 197, 0.5), rgba(91, 14, 214, 0.5) 100%);
+}
+
 @media screen and (max-width: 768px) {
   .card {
     width: 100%;

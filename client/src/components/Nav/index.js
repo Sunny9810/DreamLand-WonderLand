@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container, Offcanvas, Button } from 'react-bootstrap';
+import '../../index.css';
 import Logo from "../../images/animals/lil-cutie.png";
 
 function MyNavbar() {
@@ -36,7 +37,7 @@ function MyNavbar() {
   }
   const expand = false;
   return (
-    <Navbar expand={expand} className="bg-body-tertiary mb-3" data-bs-theme="dark">
+    <Navbar expand={expand} className="bg-body-tertiary mb-3 nav-background">
       <Container fluid>
         <Navbar.Brand href="/">Dreamland Wonderland</Navbar.Brand>
         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
@@ -44,28 +45,31 @@ function MyNavbar() {
           id={`offcanvasNavbar-expand-${expand}`}
           aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
           placement="end"
-          data-bs-theme="dark"
+          className="nav-background"
         >
-          <Offcanvas.Header closeButton>
+          <Offcanvas.Header className="border border-dark" closeButton>
             <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
               Dreamland Wonderland
             </Offcanvas.Title>
           </Offcanvas.Header>
           <Nav className="flex-column">
             <Nav.Link href="/">Home</Nav.Link>
-            <NavDropdown title="Sizes" id="navbarScrollingDropdown" menuVariant="dark">
+            <NavDropdown title="Sizes" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Babies</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Kids</NavDropdown.Item>
               <NavDropdown.Item href="#action4">Adults</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">All</NavDropdown.Item>
             </NavDropdown>
-            <NavDropdown title="Account" id="navbarScrollingDropdown" menuVariant="dark">
+            <NavDropdown title="Account" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/signup">Sign-up</NavDropdown.Item>
               <NavDropdown.Item href="/login">Login</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/orderHistory">Profile</NavDropdown.Item>
             </NavDropdown>
+            <Nav.Link href="/cart">Cart</Nav.Link>
+
+
           </Nav>
         </Navbar.Offcanvas>
       </Container>
