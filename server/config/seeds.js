@@ -23,9 +23,9 @@ db.once("open", async () => {
 
   const products = await Product.insertMany([
     {
-      name: "Topo",
+      name: "Aurora",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Beautiful Aurora pattern based on Nature's wonders.",
       image: ["/Baby/1.png", "/patterns/19_1.jpg"],
       category: categories[0]._id,
 
@@ -33,9 +33,9 @@ db.once("open", async () => {
       quantity: 500,
     },
     {
-      name: "Topo",
+      name: "Modern",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Modern forest pattern for dreamy sleep.",
       image: ["/Baby/2.png", "/patterns/21_1.jpg"],
       category: categories[0]._id,
 
@@ -43,9 +43,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Dots",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Dotted pattern for dreamy sleep. Bamboo...",
       image: ["/Baby/3.png", "/patterns/20_1.jpg"],
       category: categories[0]._id,
 
@@ -53,9 +53,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Stripes",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Stripes art design For dreamy person.",
       image: ["/Baby/4.png", "/patterns/22_1.jpg"],
       category: categories[0]._id,
 
@@ -63,9 +63,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Forest",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Forest vibes for nature buddies.",
       image: ["/Baby/5.png", "/patterns/27_1.jpg"],
       category: categories[0]._id,
 
@@ -73,9 +73,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Sunrise",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Sun rise patterns for positive vibes",
       image: ["/Baby/6.png", "/patterns/24_1.jpg"],
       category: categories[0]._id,
 
@@ -83,9 +83,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Moon and Stars",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Get settled in with a classic.",
       image: ["/Baby/7.png", "/patterns/25_1.jpg"],
       category: categories[0]._id,
 
@@ -93,9 +93,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Mashroom",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Join the forest creatures with these Mushroom Jammies.",
       image: ["/Baby/8.png", "/patterns/26_1.jpg"],
       category: categories[0]._id,
 
@@ -103,9 +103,9 @@ db.once("open", async () => {
       quantity: 500,
     },
         {
-      name: "Topo",
+      name: "Geometric",
       description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
+      "Geometic design style for cool sleepy.",
       image: ["/Baby/9.png", "/patterns/23_1.jpg"],
       category: categories[0]._id,
 
@@ -166,7 +166,7 @@ db.once("open", async () => {
     {
       name: "Modern",
       category: categories[2]._id,
-      description: "pants",
+      description: "Modern forest pattern for dreamy sleep.",
       image: ["/Men/21.png", "/patterns/21_1.jpg"],
       price: 25,
       quantity: 600,
