@@ -31,7 +31,7 @@ function Signup(props) {
     //! input change handle function, 
     //! will take the 'name' of the input field where event is happening 
     //! and 'value' of input, so email input will take 'name' = email and value of string typed
-    //! then updating the formStates value where specified field matches '[name]', email or password
+    //! then updating the formStates value where specified field matches '[name]', either email or password field in formState
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({
@@ -100,7 +100,8 @@ function Signup(props) {
 
 export default Signup;
 
-//! the Signup component handles user signup functionality. 
+//* Sign Up Component summary
+//! component handles user signup functionality. 
 //! It includes a form with various input fields for collecting user information. 
 //! The form submission triggers a mutation to add the user, 
 //! and the user is then logged in using the generated token. 

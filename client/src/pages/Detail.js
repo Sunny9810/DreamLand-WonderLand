@@ -14,6 +14,7 @@ import {
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import spinner from "../assets/spinner.gif";
+import './styles/details.css'
 
 function Detail() {
   // create disptach from useDispatch()
@@ -32,6 +33,17 @@ function Detail() {
   const { products, cart } = state;
 
   const [currentSize, setCurrentSize] = useState("");
+  
+  const [listing, setListing] = useState("")
+
+  const isCartItemMatch = (cartItem) => {
+    return cartItem._id === currentProduct._id && cartItem.size === currentSize;
+  };
+
+
+//  const [quantityVisable, setQuantityVisible] = useState(false)
+
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     // already in global store
@@ -72,18 +84,18 @@ function Detail() {
         type: UPDATE_CART_QUANTITY,
         _id: id,
         size: currentSize,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
       idbPromise("cart", "put", {
         ...itemInCart,
-        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + 1,
+        purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: 1, size: currentSize },
+        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: 1 });
+      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
     }
   };
 
@@ -91,12 +103,17 @@ function Detail() {
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
+      size: currentSize
     });
 
     idbPromise("cart", "delete", { ...currentProduct });
   };
+
   const onChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
+
+    setQuantity(parseInt(value, 10));
+
     if (value === "0") {
       dispatch({
         type: REMOVE_FROM_CART,
@@ -119,21 +136,37 @@ function Detail() {
   const onClick = (e) => {
     const value = e.target.id;
     console.log(value);
+    
 
+//    setQuantityVisible(!quantityVisable)
     setCurrentSize(value);
+    setListing(`${value}-${currentProduct._id}`)
+
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
+      listing: listing
     });
   };
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container my-1">
-          <div className="product">
-            <div className="productLeft">
-              <div className="images">
+        <div className="container" >
+          <div className="row product">
+            <div className="col">
+              
+            </div>
+            <div className="card">
+            <div className="container d-flex back-link">
+              <Link to="/">← Back to Products</Link>
+              </div>
+              <div className="container d-flex-col mx-auto" >
+                <img src={`/images/${currentImage}`} alt={currentImage} />
+                <div className="row d-flex-row d-mx-auto images" style={{width: 200}} >
+                <div className="row d-flex">
+                <div className="col d-flex">
+                
                 {currentProduct.image.map((i) => (
                   <img
                     src={`/images/${i}`}
@@ -146,13 +179,10 @@ function Detail() {
                   alt={currentProduct.image[0]}
                 />
                 ; */}
+                </div>
+                </div>
               </div>
-              <div className="mainimage">
-                <img src={`/images/${currentImage}`} alt={currentImage} />
               </div>
-            </div>
-            <div class="productRight">
-              <Link to="/">← Back to Products</Link>
 
               <h2>{currentProduct.name}</h2>
 
@@ -162,22 +192,28 @@ function Detail() {
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
                 {currentProduct?.category?.size?.map((s) => (
-                  <button id={s} onClick={onClick}>
+                  <button className="d-btn" id={s} onClick={onClick}>
                     {s}
                   </button>
                 ))}
                 <br />
                 <br />
                 <input
+//                  disabled={quantityVisable || cart.some((item) => item.listing === listing)}
                   type="number"
                   placeholder="1"
-                  // value={item.purchaseQuantity}
+                  min = '1'
+                  value = {quantity}
                   onChange={onChange}
+                  
                 />
                 <br />
-                <button onClick={addToCart}>Add to Cart</button>
-                <button
-                  disabled={!cart.find((p) => p._id === currentProduct._id)}
+                <button className="d-btn"
+                onClick={addToCart}>Add to Cart</button>
+                <button className="d-btn"
+                    //! disabled is false if the cart item matches currentProduct
+                    //! meaning it will display
+                  disabled={!cart.some(isCartItemMatch)}
                   onClick={removeFromCart}
                 >
                   Remove from Cart

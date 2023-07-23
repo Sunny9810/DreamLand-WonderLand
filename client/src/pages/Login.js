@@ -14,7 +14,7 @@ function Login(props) {
     //! submit form will start "login" mutation function
     //! sending the required variables from the local formState
     //! the mutationResponse will extract the token value
-    //! and pass it to Auth.login function that saves it in localStorage
+    //! and pass it to Auth.login function which saves it in localStorage
     //! and reroutes client to '/' home
   const handleFormSubmit = async (event) => {
     event.preventDefault();

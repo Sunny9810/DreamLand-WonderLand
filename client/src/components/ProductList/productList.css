@@ -1,7 +1,10 @@
+
+
 body {
     background-color: #9cabc9;
-  
-    color:#839096;
+   font-size: 18px;
+    font-family: "TsukimiRounded-Regular"; 
+    color:#000e14;
   
   }
   
@@ -20,14 +23,29 @@ body {
   main.content {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    
+    
   }
   
   main .pg-header {
-    padding: 60px ;
+    padding: 10px ;
+    margin-bottom: 10px;
     background: rgba(0, 0, 0, 0.473);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(187, 195, 202);
+    
+
+    
   
   }
-  
+  button {
+    border-radius: 20px;
+    margin-left: 10px;
+  }
   /* Breadcrumb */
   
   .breadcrumb a {
@@ -41,35 +59,21 @@ body {
   
     }
   }
-  
-  /* /* About Section */
-  .about h2 {
-    text-transform: uppercase;
-    font-size: 22px;
-    font-weight: 600;
-    padding-bottom: 10px;
-    position: relative;
-    margin-bottom: 20px;
-  }
-  
-  /* .about h2::after {
-    position: absolute;
-    content: '';
-    width: 50px;
-    bottom: 0;
-    height: 2px;
-    background-color: aqua;
-    left:0
-  
-  } */
-  
-  
-  /* All Products */
+ 
   
   .pg-header{
     border-radius: 20px;
-    
+    font-family: "TsukimiRounded-Regular"; 
+
   }
+
+  .pg-header h2 {
+    border-radius: 20px;
+    font-family: "DreamLined"; 
+    font-size: 3rem;
+
+  }
+
   .products-row .card .card-body {
     background: rgba(128, 124, 124, 0.308);
     border-radius: 20px;
@@ -93,15 +97,20 @@ body {
   /* card styling */
   
   .card {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.329);
     border-radius: 20px;
     box-shadow: 0px 10px 10px rgb(48, 48, 54);
   
   }
   
-  .card .cart-title {
-    margin-bottom: 15px;
+  .card .card-title {
+    margin-bottom: 5px;
+    background-color: rgba(240, 255, 255, 0.144);
     text-align: center;
+    border-radius: 10px;
+    font-family: "TsukimiRounded-Bold"; 
+    font-size:larger;
+    color: beige;
   
   }
   
@@ -124,11 +133,18 @@ body {
   }
   
   .card .price {
-    color:#02202c
+    font-family: "SquadaOne";
+    font-weight: 200;
+    font-size: 1.5rem;
+    color:#fafafa
+    
+    
   }
   
-  .card .btn-dark {
+  .card .button {
     font-weight: 600;
+    border-radius: 20px;
+    
   }
   
   /* single product */
