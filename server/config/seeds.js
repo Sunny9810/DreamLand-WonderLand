@@ -103,11 +103,56 @@ db.once("open", async () => {
       price: 10,
       quantity: 500,
     },
+
     {
-      name: "Topo",
-      description:
-        "Topography pattern to guide you through your Dreamland Wonderland.",
-      image: ["/Women/36.png", "/patterns/23_1.jpg"],
+      name: "Aurora",
+      description: "Beautiful Aurora pattern based on Nature's wonders.",
+      image: ["/kids/11.png", "/patterns/19_1.jpg"],
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Modern",
+      description: "Modern forest pattern for dreamy sleep.",
+      image: ["/Kids/10.png", "/patterns/21_1.jpg"],
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Dots",
+      description: "Dotted pattern for dreamy sleep. Bamboo...",
+      image: ["/Kids/12.png", "/patterns/20_1.jpg"],
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Stripes",
+      description: "Stripes art design For dreamy person.",
+      image: ["/Kids/13.png", "/patterns/22_1.jpg"],
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Forest",
+      description: "Forest vibes for nature buddies.",
+      image: ["/Kids/15.png", "/patterns/27_1.jpg"],
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Sunrise",
+      description: "Sun rise patterns for positive vibes",
+      image: ["/Kids/16.png", "/patterns/24_1.jpg"],
       category: categories[1]._id,
 
       price: 10,
@@ -115,27 +160,30 @@ db.once("open", async () => {
     },
     {
       name: "Moon and Stars",
-      category: categories[1]._id,
       description: "Get settled in with a classic.",
       image: ["/Kids/17.png", "/patterns/25_1.jpg"],
-      price: 20,
-      quantity: 600,
+      category: categories[1]._id,
+
+      price: 10,
+      quantity: 500,
     },
     {
-      name: "Sunrise",
+      name: "Mashroom",
+      description: "Join the forest creatures with these Mushroom Jammies.",
+      image: ["/Kids/18.png", "/patterns/26_1.jpg"],
       category: categories[1]._id,
-      description: "Sun rise patterns for positive vibes",
-      image: ["/Kids/16.png", "/patterns/24_1.jpg"],
-      price: 25,
-      quantity: 600,
+
+      price: 10,
+      quantity: 500,
     },
     {
-      name: "Mushroom",
+      name: "Geometric",
+      description: "Geometic design style for cool sleepy.",
+      image: ["/Kids/14.png", "/patterns/23_1.jpg"],
       category: categories[1]._id,
-      description: "Join the forest creatures with these Mushroom Jammies",
-      image: ["/Baby/8.png", "/patterns/26_1.jpg"],
-      price: 20,
-      quantity: 600,
+
+      price: 10,
+      quantity: 500,
     },
 
     {
