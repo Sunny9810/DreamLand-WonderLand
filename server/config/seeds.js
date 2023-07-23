@@ -26,6 +26,96 @@ db.once("open", async () => {
       name: "Topo",
       description:
         "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/1.png", "/patterns/19_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/2.png", "/patterns/21_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/3.png", "/patterns/20_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/4.png", "/patterns/22_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/5.png", "/patterns/27_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/6.png", "/patterns/24_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/7.png", "/patterns/25_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/8.png", "/patterns/26_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+        {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
+      image: ["/Baby/9.png", "/patterns/23_1.jpg"],
+      category: categories[0]._id,
+
+      price: 10,
+      quantity: 500,
+    },
+    {
+      name: "Topo",
+      description:
+        "Topography pattern to guide you through your Dreamland Wonderland.",
       image: ["/Women/36.png", "/patterns/23_1.jpg"],
       category: categories[1]._id,
 
