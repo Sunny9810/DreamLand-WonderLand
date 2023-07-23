@@ -199,13 +199,11 @@ function Detail() {
                 <br />
                 <br />
                 <input
-//                  disabled={quantityVisable || cart.some((item) => item.listing === listing)}
                   type="number"
                   placeholder="1"
                   min = '1'
                   value = {quantity}
                   onChange={onChange}
-                  
                 />
                 <br />
                 <button className="d-btn"

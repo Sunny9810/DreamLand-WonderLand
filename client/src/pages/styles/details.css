@@ -46,11 +46,9 @@ input {
 
 @media screen and (max-width: 768px) {
     .card .container .product .img {
-      display: flex;
-      flex-direction: row;
-      align-items: center; /* Center items horizontally */
-    
-      width: 100%;
-      
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Center items horizontally */
+    width: 100%;
     }
-  }
+}

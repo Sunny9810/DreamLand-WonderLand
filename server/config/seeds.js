@@ -6,15 +6,15 @@ db.once("open", async () => {   //! db.once listens for the connection to the db
 
   const categories = await Category.insertMany([
     {
-      name: "Baby(0-24M)",
+      name: "Baby",
       size: ["NB", "0-3", "3-6", "6-9", "9-12", "12-18", "18-24"],
       
     },
     {
-      name: "Kids(2-14Y)",
+      name: "Kids",
       size: ["2-3", "4-5", "6-7", "8-9", "10", "12", "14"],
     },
-    { name: "Grownups(S-XXL)", 
+    { name: "Grownups", 
     size: ["XS", "S", "M", "L", "XL", "XXL"] },
   ]);
 
