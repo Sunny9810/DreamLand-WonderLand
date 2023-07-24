@@ -95,6 +95,7 @@ function Detail() {
       });
       idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
     }
+    setQuantity(1);
   };
 
   const removeFromCart = () => {
