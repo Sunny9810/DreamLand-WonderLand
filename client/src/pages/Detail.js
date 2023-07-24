@@ -191,14 +191,19 @@ function Detail() {
               <p className="d-flex-row">
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
+                <label for="sizes">Sizes:  </label>
                 {currentProduct?.category?.size?.map((s) => (
                   <button className="d-btn" id={s} onClick={onClick}>
                     {s}
                   </button>
                 ))}
                 <br />
+                <label for="quantity">Quantity:  </label>
                 <input
+                
                   type="number"
+                  name="quantity"
+                  id="quantity"
                   placeholder="1"
                   min="1"
                   value={quantity}

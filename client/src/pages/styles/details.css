@@ -13,7 +13,7 @@ body {
   cursor: pointer;
 
   color: darkcyan;
-  background-color: rgb(217, 235, 232);
+  background-color: rgb(217, 235, 232); /*currently set to transparent opacity, but can be changed if necessary */
 }
 
 input {
@@ -26,9 +26,10 @@ input {
 }
 
 .card p {
-  background-color: rgba(247, 238, 238, 0.274);
+  background-color: rgba(247, 238, 238, 0);
   font-family: "Dosis";
   font-size: 1.5rem;
+  
 }
 
 .back-link a {
