@@ -10,18 +10,19 @@
 .go-to-login-link {
   display: block;
   margin-bottom: 20px;
-  text-decoration:none;
-  color:rgb(20, 165, 201);
-  font-size: 28px;
+  text-decoration: none;
+  color: rgb(38, 200, 246);
+  font-size: 30px;
+  /* background-color: aliceblue;
+  width: 120px; */
 }
 
 .signup-heading {
-  text-align:left;
+  text-align: left;
   margin-bottom: 20px;
   color: rgb(233, 209, 158);
   padding-left: 10%;
 }
-
 
 /* .label {
   display: bold;
@@ -38,7 +39,7 @@
 .submit-btn {
   width: 100%;
   padding: 10px;
-  background-color:rgb(20, 165, 201);
+  background-color: rgb(20, 165, 201);
   color: rgb(233, 209, 158);
   border: none;
   border-radius: 5px;
@@ -48,5 +49,3 @@
 .submit-btn:hover {
   background-color: #0056b3;
 }
-
-  
