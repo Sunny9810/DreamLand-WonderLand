@@ -162,8 +162,8 @@ function Detail() {
               <div className="container d-flex back-link">
                 <Link to="/">← Back to Products</Link>
               </div>
-              <div className="container d-flex-col mx-auto">
-                <img src={`/images/${currentImage}`} alt={currentImage} />
+              <div className="container d-flex-col mx-auto" id="mainImage">
+                <img src={`/images/${currentImage}`} alt={currentImage}  style={{ width: 600 }}/>
                 <div
                   className="row d-flex-row d-mx-auto images"
                   style={{ width: 200 }}

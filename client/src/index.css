@@ -19,7 +19,6 @@ body {
 }
 
 body {
-
   background-image: url(/public/images/BackgroundImages/coverscape.png);
   margin: 0;
   padding: 0;
@@ -28,14 +27,12 @@ body {
   line-height: 1.5;
   font-size: 16px;
   background-color: #06061e;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color:antiquewhite
-  
-  
+  color: antiquewhite;
 }
 
 h1,
@@ -122,7 +119,6 @@ img {
   max-width: 100%;
 }
 
-
 span[role="img"] {
   cursor: default;
 }
@@ -130,6 +126,7 @@ span[role="img"] {
 form {
   width: 40%;
 }
+
 
 input {
   font-size: 1rem;
@@ -225,65 +222,64 @@ input:focus {
 
 /* custom fonts */
 @font-face {
-  font-family: 'DreamLined';
-  src: local('DreamLined'),
-  url('./fonts/TiltPrism-Regular.ttf') format('truetype');
+  font-family: "DreamLined";
+  src: local("DreamLined"),
+    url("./fonts/TiltPrism-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Flamenco-Light';
-  src: local('Flamenco-light'),
-  url('./fonts/Flamenco-Light.ttf') format('truetype');
+  font-family: "Flamenco-Light";
+  src: local("Flamenco-light"),
+    url("./fonts/Flamenco-Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Bagel';
-  src: local('Bagel'),
-  url('./fonts/BagelFatOne-Regular.ttf') format('truetype');
+  font-family: "Bagel";
+  src: local("Bagel"), url("./fonts/BagelFatOne-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Flameco-Regular';
-  src: local('Flameco-Regular'),
-  url('./fonts/Flamenco-Regular.ttf') format('truetype');
+  font-family: "Flameco-Regular";
+  src: local("Flameco-Regular"),
+    url("./fonts/Flamenco-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'TiltPrism-Regular-Variable';
-  src: local('TiltPrism-Regular-Variable'),
-  url('./fonts/TiltPrism-Regular-VariableFont_XROT,YROT.ttf') format('truetype');
-}
-
-
-@font-face {
-  font-family: 'TsukimiRounded-Bold';
-  src: local('TsukimiRounded-Bold'),
-  url('./fonts/TsukimiRounded-Bold.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'TsukimiRounded-Light';
-  src: local('TsukimiRounded-Light'),
-  url('./fonts/TsukimiRounded-Light.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'TsukimiRounded-Medium';
-  src: local('TsukimiRounded-Medium'),
-  url('./fonts/TsukimiRounded-Medium.ttf') format('truetype');
+  font-family: "TiltPrism-Regular-Variable";
+  src: local("TiltPrism-Regular-Variable"),
+    url("./fonts/TiltPrism-Regular-VariableFont_XROT,YROT.ttf")
+      format("truetype");
 }
 
 @font-face {
-  font-family: 'TsukimiRounded-Regular';
-  src: local('TsukimiRounded-Regular'),
-  url('./fonts/TsukimiRounded-Regular.ttf') format('truetype');
+  font-family: "TsukimiRounded-Bold";
+  src: local("TsukimiRounded-Bold"),
+    url("./fonts/TsukimiRounded-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TsukimiRounded-Light";
+  src: local("TsukimiRounded-Light"),
+    url("./fonts/TsukimiRounded-Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "TsukimiRounded-Medium";
+  src: local("TsukimiRounded-Medium"),
+    url("./fonts/TsukimiRounded-Medium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'SquadaOne';
-  src: local('SquadaOne'),
-  url('./fonts/SquadaOne-Regular.ttf') format('truetype');
+  font-family: "TsukimiRounded-Regular";
+  src: local("TsukimiRounded-Regular"),
+    url("./fonts/TsukimiRounded-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "SquadaOne";
+  src: local("SquadaOne"),
+    url("./fonts/SquadaOne-Regular.ttf") format("truetype");
 }
 @font-face {
-  font-family: 'Dosis';
-  src: local('Dosis'),
-  url('./fonts/Dosis-VariableFont_wght.ttf') format('truetype');
+  font-family: "Dosis";
+  src: local("Dosis"),
+    url("./fonts/Dosis-VariableFont_wght.ttf") format("truetype");
 }
