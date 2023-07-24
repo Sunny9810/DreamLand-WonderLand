@@ -55,26 +55,20 @@ function Nav() {
   const navbarClass = showLogo ? 'custom-navbar navbar-expanded' : 'custom-navbar navbar-collapsed';
   const logoClass = showLogo ? 'nav-logo navbar-logo-shown' : 'nav-logo navbar-logo-hidden';
 
-  // Reloads the page when clicking on the logo or heading and when on the home ('/') route
-  const handleLogoHeadingClick = () => {
-    if (location.pathname === '/') {
-      window.location.reload();
-    }
-  };
 
   return (
     <Navbar expand="lg" sticky="top" expanded={navbarExpanded} onToggle={() => setNavbarExpanded(!navbarExpanded)} className={navbarClass}>
       <div className="container">
         <Navbar.Brand>
           {!showLogo && (
-            <h1 className="nav-heading" onClick={handleLogoHeadingClick}>
+            <h1 className="nav-heading">
               <a href="/" className="nav-heading-link">
                 DreamLand <span role="img" aria-label="zzz">💤</span> Wonderland
               </a>
             </h1>
           )}
           {showLogo && (
-            <a href="/" className="nav-heading-link" onClick={handleLogoHeadingClick}>
+            <a href="/" className="nav-heading-link">
               <img className={logoClass} src={DreamLogo} alt="dreamland wonderland logo" />
             </a>
           )}

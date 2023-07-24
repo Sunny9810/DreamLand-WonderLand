@@ -28,7 +28,7 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const [currentImage, setCurrentImage] = useState(currentProduct.image[0]);
+  const [currentImage, setCurrentImage] = useState(currentProduct.image[""]);
 
   const { products, cart } = state;
 
@@ -36,12 +36,12 @@ function Detail() {
   
   const [listing, setListing] = useState("")
 
+  const [quantity, setQuantity] = useState(1)
+
   const isCartItemMatch = (cartItem) => {
     return cartItem._id === currentProduct._id && cartItem.size === currentSize;
   };
 
-
-  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     // already in global store
@@ -73,10 +73,12 @@ function Detail() {
   }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
+      //!checks cart in global state for item existing by _id and size
     const itemInCart = cart.find(
       (cartItem) => cartItem._id === id && cartItem.size === currentSize
     );
-
+      
+      //!
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -86,6 +88,8 @@ function Detail() {
       });
       idbPromise("cart", "put", {
         ...itemInCart,
+        _id: id,
+        size: currentSize,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
     } else {
@@ -93,7 +97,7 @@ function Detail() {
         type: ADD_TO_CART,
         product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
+      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing});
     }
   };
 
@@ -104,7 +108,7 @@ function Detail() {
       size: currentSize
     });
 
-    idbPromise("cart", "delete", { ...currentProduct });
+    idbPromise("cart", "delete", { ...currentProduct, size: currentSize, _id: currentProduct._id });
   };
 
   const onChange = (e) => {
@@ -116,16 +120,20 @@ function Detail() {
       dispatch({
         type: REMOVE_FROM_CART,
         _id: currentProduct._id,
+        size: currentSize,
       });
       idbPromise("cart", "delete", { ...currentProduct });
     } else {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: currentProduct._id,
+        size: currentSize,
         purchaseQuantity: parseInt(value),
       });
       idbPromise("cart", "put", {
         ...currentProduct,
+        _id: currentProduct._id,
+        size: currentSize,
         purchaseQuantity: parseInt(value),
       });
     }
@@ -135,16 +143,19 @@ function Detail() {
     const value = e.target.id;
     console.log(value);
     
+    const newListing = `${value}-${currentProduct._id}`
 
 
     setCurrentSize(value);
-    setListing(`${value}-${currentProduct._id}`)
+    setQuantity(quantity)
+    setListing(newListing)
 
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
-      listing: listing
+      listing: newListing,
+      quantity: quantity
     });
   };
   return (

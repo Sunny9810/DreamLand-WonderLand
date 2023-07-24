@@ -6,7 +6,7 @@ import { idbPromise } from "../../utils/helpers";
 import './cartitem.css';
 
 const CartItem = ({ item }) => {
-
+  console.log(item)
   // create dispatch object from useDispatch()
   const dispatch = useDispatch();
 
