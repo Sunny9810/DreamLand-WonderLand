@@ -63,7 +63,7 @@
     margin: 0 0.5rem 1rem 0;
   }
   
-  .product {
+  /* .product {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -78,17 +78,16 @@
   
   .images {
     display: flex;
-    flex-direction: column;
-    width: 300px;
-    height: 300px;
+    flex-direction: row;
+    width: 300px;   
   
-    gap: 10px;
+   
   }
   
   .mainimage {
     width: 400px;
-    height: 600px;
-  }
+    
+  } */
   .shopping-cart{
     font-family: wavy
   }

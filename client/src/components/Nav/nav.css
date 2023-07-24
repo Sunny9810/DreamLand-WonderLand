@@ -64,7 +64,7 @@
 .nav-menu {
   display: flex;
   flex-direction: column;
-  background-color: darkblue;
+  background-color: rgb(32, 32, 65);
 }
 
 @media (min-width: 992px) {
@@ -75,7 +75,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .nav-heading {
     font-size: 1rem;
   }

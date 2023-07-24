@@ -14,7 +14,7 @@ import {
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import spinner from "../assets/spinner.gif";
-import './styles/details.css'
+import "./styles/details.css";
 
 function Detail() {
   // create disptach from useDispatch()
@@ -33,15 +33,16 @@ function Detail() {
   const { products, cart } = state;
 
   const [currentSize, setCurrentSize] = useState("");
-  
-  const [listing, setListing] = useState("")
+
+  const [listing, setListing] = useState("");
 
   const [quantity, setQuantity] = useState(1)
+
+  const [warning, setWarning] = useState("");
 
   const isCartItemMatch = (cartItem) => {
     return cartItem._id === currentProduct._id && cartItem.size === currentSize;
   };
-
 
   useEffect(() => {
     // already in global store
@@ -73,6 +74,15 @@ function Detail() {
   }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
+
+    if (!currentSize) {
+      
+      setWarning("Please select a size before adding to cart");
+      return;
+    }
+
+    setWarning("");
+
       //!checks cart in global state for item existing by _id and size
     const itemInCart = cart.find(
       (cartItem) => cartItem._id === id && cartItem.size === currentSize
@@ -95,17 +105,26 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing },
+        product: {
+          ...currentProduct,
+          purchaseQuantity: quantity,
+          size: currentSize,
+          listing: listing,
+        },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing});
+      idbPromise("cart", "put", {
+        ...currentProduct,
+        purchaseQuantity: quantity,
+      });
     }
+    setQuantity(1);
   };
 
   const removeFromCart = () => {
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
-      size: currentSize
+      size: currentSize,
     });
 
     idbPromise("cart", "delete", { ...currentProduct, size: currentSize, _id: currentProduct._id });
@@ -143,94 +162,91 @@ function Detail() {
     const value = e.target.id;
     console.log(value);
     
-    const newListing = `${value}-${currentProduct._id}`
 
 
     setCurrentSize(value);
-    setQuantity(quantity)
-    setListing(newListing)
+    setListing(`${value}-${currentProduct._id}`)
 
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
-      listing: newListing,
-      quantity: quantity
+      listing: listing
     });
   };
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container" >
+        <div className="container">
           <div className="row product">
-            <div className="col">
-              
-            </div>
+            <div className="col"></div>
             <div className="card">
-            <div className="container d-flex back-link">
-              <Link to="/">← Back to Products</Link>
+              <div className="container d-flex back-link">
+                <Link to="/">← Back to Products</Link>
               </div>
-              <div className="container d-flex-col mx-auto" >
-                <img src={`/images/${currentImage}`} alt={currentImage} />
-                <div className="row d-flex-row d-mx-auto images" style={{width: 200}} >
-                <div className="row d-flex">
-                <div className="col d-flex">
-                
-                {currentProduct.image.map((i) => (
-                  <img
-                    src={`/images/${i}`}
-                    alt={i}
-                    onClick={() => setCurrentImage(i)}
-                  />
-                ))}
-                {/* <img
-                  src={`/images/${currentProduct.image[0]}`}
-                  alt={currentProduct.image[0]}
+              <div className="container d-flex-col mx-auto p-2">
+                <img
+                  className="mainimage"
+                  src={`/images/${currentImage}`}
+                  alt={currentImage}
                 />
-                ; */}
+                <div
+                  className="row d-inline-flex mx-auto images"
+                  style={{ width: 200 }}
+                >
+                  {/* Remove the unnecessary nested div element */}
+                  {currentProduct.image.map((i) => (
+                    <img
+                      key={i} // Add a key attribute to each image
+                      src={`/images/${i}`}
+                      alt={i}
+                      onClick={() => setCurrentImage(i)}
+                      className="rounded-circle" // Add the class for the circular image
+                    />
+                  ))}
                 </div>
-                </div>
-              </div>
               </div>
 
               <h2>{currentProduct.name}</h2>
 
-              <p>{currentProduct.description}</p>
-
-              <p>
+              <p className="d-flex-row my-0">{currentProduct.description}</p>
+              <br />
+              <p className="d-flex-row">
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
+                <label for="sizes">Sizes:  </label>
                 {currentProduct?.category?.size?.map((s) => (
                   <button className="d-btn" id={s} onClick={onClick}>
                     {s}
                   </button>
                 ))}
                 <br />
-                <br />
+                <label for="quantity">Quantity:  </label>
                 <input
+                
                   type="number"
+                  name="quantity"
+                  id="quantity"
                   placeholder="1"
-                  min = '1'
-                  value = {quantity}
+                  min="1"
+                  value={quantity}
                   onChange={onChange}
                 />
                 <br />
-                <button className="d-btn"
-                onClick={addToCart}>Add to Cart</button>
-                <button className="d-btn"
-                    //! disabled is false if the cart item matches currentProduct
-                    //! meaning it will display
+                {warning && <p className="warning">{warning}</p>}
+                <button className="d-btn" onClick={addToCart}>
+                  Add to Cart
+                </button>
+                <button
+                  className="d-btn"
+                  //! disabled is false if the cart item matches currentProduct
+                  //! meaning it will display
                   disabled={!cart.some(isCartItemMatch)}
                   onClick={removeFromCart}
                 >
                   Remove from Cart
                 </button>
               </p>
-
-              {/* <img
-                src={`/images/${currentProduct.image}`}
-                alt={currentProduct.name}
-              /> */}
             </div>
           </div>
         </div>
