@@ -18,8 +18,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   // create state from useSelector()
   const state = useSelector((s) => s);
+
+    //! productids are structured as the options in getcheckout
+    //! passed to this query and res.data is waited on
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
+    //! when the data exist/updates from the QUERYCHECKOUT response
+      //! the sessionid is extracted and helps redirect to the stripe checkout page
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -53,6 +58,8 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+    //! on submit all the item ids are psuhed into a productIDs array
+      //! passed into getcheckout and used as the options for QUERYCHECKOUT
   function submitCheckout() {
     const productIds = [];
 
