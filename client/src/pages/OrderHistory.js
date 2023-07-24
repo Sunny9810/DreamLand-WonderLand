@@ -10,6 +10,7 @@ function OrderHistory() {
 
   if (data) {
     user = data.user;
+    console.log(user.orders)
   }
 
   return (
@@ -31,7 +32,7 @@ function OrderHistory() {
                   {order.products.map(({ _id, image, name, price }, index) => (
                     <div key={index} className="card px-1 py-1">
                       <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
+                        <img alt={name} src={`/images${image[0]}`} />
                         <p>{name}</p>
                       </Link>
                       <div>

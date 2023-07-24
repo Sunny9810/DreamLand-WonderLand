@@ -210,9 +210,10 @@ function Detail() {
               <p className="d-flex-row">
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
-                <label for="sizes">Sizes:  </label>
+                <label htmlFor="sizes" >Sizes:  </label>
                 {currentProduct?.category?.size?.map((s) => (
                   <button 
+                    key={s}
                     className={`d-btn ${isSizeSelected(s) ? 'selected' : ''}`}
                     id={s} 
                     onClick={onClick}
@@ -221,7 +222,7 @@ function Detail() {
                   </button>
                 ))}
                 <br />
-                <label for="quantity">Quantity:  </label>
+                <label htmlFor="quantity" >Quantity:  </label>
                 <input
                 
                   type="number"
