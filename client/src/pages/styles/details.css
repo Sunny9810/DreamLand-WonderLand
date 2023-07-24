@@ -13,7 +13,7 @@ body {
   cursor: pointer;
 
   color: darkcyan;
-  background-color: rgb(217, 235, 232);
+  background-color: rgb(217, 235, 232); /*currently set to transparent opacity, but can be changed if necessary */
 }
 
 input {
@@ -26,9 +26,10 @@ input {
 }
 
 .card p {
-  background-color: rgba(247, 238, 238, 0.274);
+  background-color: rgba(247, 238, 238, 0);
   font-family: "Dosis";
   font-size: 1.5rem;
+  
 }
 
 .back-link a {
@@ -42,6 +43,32 @@ input {
   color: rgb(24, 52, 63);
 }
 
+.product {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.productLeft {
+  display: flex;
+  flex-direction: row;
+
+  gap: 10px;
+}
+
+.images {
+  display: flex;
+  flex-direction: row;
+  width: 100px;   
+
+ 
+}
+
+.mainimage {
+  max-width: 400px;
+  
+}
+
 @media screen and (max-width: 770px) {
   .card .container .product .img {
     display: flex;
@@ -49,4 +76,55 @@ input {
     align-items: center; /* Center items horizontally */
     width: 100%;
   }
+}
+
+
+
+
+.card {
+  /* Add flexbox to align elements vertically */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-container {
+  /* Set a fixed width for the container to place the images on the right side */
+  width: 400px;
+  /* Add margin to separate it from the main image */
+  margin-left: 20px;
+}
+
+.mainimage {
+  max-height: 100%;
+  width: 75%;
+  /* Add some padding to make it visually appealing */
+  padding: 10px;
+  /* Add a border or box-shadow for better visibility */
+  
+}
+
+.images {
+  /* No need for flex-direction: row, it will automatically stack images vertically */
+  /* Width can be set to 100% to make it take up the remaining width */
+  width: 100%;
+  /* Add some space between the smaller images */
+  margin-top: 2px;
+  /* Center the images both horizontally and vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Allow the images to wrap onto the next line */
+  flex-wrap: wrap;
+  
+}
+
+.images img {
+  /* Set width and height to make the image a square */
+  max-height: 100%;
+  width: 75%;
+  /* Set border-radius to create a circle */
+  border-radius: 50%; /* Half of the width (or height) */
+  /* Add some space between the smaller images */
+  margin: 5px; /* Adjust this value as needed */
 }
