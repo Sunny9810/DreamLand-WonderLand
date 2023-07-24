@@ -17,9 +17,9 @@ import spinner from "../assets/spinner.gif";
 import "./styles/details.css";
 
 function Detail() {
-  // create disptach from useDispatch()
+  
   const dispatch = useDispatch();
-  // create state object for useSelector() pass arrow function for selector value
+  
   const state = useSelector((s) => s);
 
   const { id } = useParams();
@@ -190,14 +190,13 @@ function Detail() {
                   className="row d-inline-flex mx-auto images"
                   style={{ width: 200 }}
                 >
-                  {/* Remove the unnecessary nested div element */}
                   {currentProduct.image.map((i) => (
                     <img
-                      key={i} // Add a key attribute to each image
+                      key={i} 
                       src={`/images/${i}`}
                       alt={i}
                       onClick={() => setCurrentImage(i)}
-                      className="rounded-circle" // Add the class for the circular image
+                      className="rounded-circle"
                     />
                   ))}
                 </div>
