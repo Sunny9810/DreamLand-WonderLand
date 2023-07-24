@@ -9,13 +9,14 @@ function Signup(props) {
     //! local state for this component is declared, "formState" intital state including two empty fields for email and password, and 'setFormState' to update it
   const [formState, setFormState] = useState({ email: '', password: '', firstName: '', lastName: '' });
     //! mutation is declared to add user
-  const [addUser] = useMutation(ADD_USER);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
     //! form submit handler function that will do the addUser mutation with the formState values as the payload,
     //! when response from database is recieved, the token is extracted,
     //! and passed into Auth.login, which will store in localStorage and reroute to '/' home
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    try{
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -26,6 +27,10 @@ function Signup(props) {
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
+    }
+    catch (e) {
+      console.log(e);
+    }
   };
 
     //! input change handle function, 
@@ -91,6 +96,11 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+        {error ? (
+          <div>
+            <p className="error-text">The provided credentials are incorrect</p>
+          </div>
+        ) : null}
         <div className="flex-row flex-end">
           <button type="submit" className='submit-btn'>Submit</button>
         </div>
