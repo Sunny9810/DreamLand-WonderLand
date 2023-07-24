@@ -2,6 +2,10 @@ body {
   overflow: scroll;
 }
 
+.warning {
+  color: red;
+}
+
 .d-btn {
   font-size: 1.35rem;
   text-decoration: none;
@@ -61,7 +65,6 @@ input {
   flex-direction: row;
   width: 100px;   
 
- 
 }
 
 .mainimage {

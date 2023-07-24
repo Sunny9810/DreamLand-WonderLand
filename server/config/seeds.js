@@ -109,7 +109,7 @@ db.once("open", async () => {
     {
       name: "Aurora",
       description: "Beautiful Aurora pattern based on Nature's wonders.",
-      image: ["/kids/11.png", "/patterns/19_1.jpg"],
+      image: ["/Kids/11.png", "/patterns/19_1.jpg"],
       category: categories[1]._id,
 
       price: 10,

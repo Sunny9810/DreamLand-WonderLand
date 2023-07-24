@@ -28,7 +28,7 @@ function Detail() {
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
-  const [currentImage, setCurrentImage] = useState(currentProduct.image[0]);
+  const [currentImage, setCurrentImage] = useState(currentProduct.image[""]);
 
   const { products, cart } = state;
 
@@ -36,11 +36,13 @@ function Detail() {
 
   const [listing, setListing] = useState("");
 
+  const [quantity, setQuantity] = useState(1)
+
+  const [warning, setWarning] = useState("");
+
   const isCartItemMatch = (cartItem) => {
     return cartItem._id === currentProduct._id && cartItem.size === currentSize;
   };
-
-  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     // already in global store
@@ -72,10 +74,21 @@ function Detail() {
   }, [products, data, loading, dispatch, id]);
 
   const addToCart = () => {
+
+    if (!currentSize) {
+      
+      setWarning("Please select a size before adding to cart");
+      return;
+    }
+
+    setWarning("");
+
+      //!checks cart in global state for item existing by _id and size
     const itemInCart = cart.find(
       (cartItem) => cartItem._id === id && cartItem.size === currentSize
     );
-
+      
+      //!
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -85,6 +98,8 @@ function Detail() {
       });
       idbPromise("cart", "put", {
         ...itemInCart,
+        _id: id,
+        size: currentSize,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
     } else {
@@ -112,7 +127,7 @@ function Detail() {
       size: currentSize,
     });
 
-    idbPromise("cart", "delete", { ...currentProduct });
+    idbPromise("cart", "delete", { ...currentProduct, size: currentSize, _id: currentProduct._id });
   };
 
   const onChange = (e) => {
@@ -124,16 +139,20 @@ function Detail() {
       dispatch({
         type: REMOVE_FROM_CART,
         _id: currentProduct._id,
+        size: currentSize,
       });
       idbPromise("cart", "delete", { ...currentProduct });
     } else {
       dispatch({
         type: UPDATE_CART_QUANTITY,
         _id: currentProduct._id,
+        size: currentSize,
         purchaseQuantity: parseInt(value),
       });
       idbPromise("cart", "put", {
         ...currentProduct,
+        _id: currentProduct._id,
+        size: currentSize,
         purchaseQuantity: parseInt(value),
       });
     }
@@ -142,14 +161,17 @@ function Detail() {
   const onClick = (e) => {
     const value = e.target.id;
     console.log(value);
+    
+
 
     setCurrentSize(value);
-    setListing(`${value}-${currentProduct._id}`);
+    setListing(`${value}-${currentProduct._id}`)
+
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
-      listing: listing,
+      listing: listing
     });
   };
   return (
@@ -211,6 +233,7 @@ function Detail() {
                   onChange={onChange}
                 />
                 <br />
+                {warning && <p className="warning">{warning}</p>}
                 <button className="d-btn" onClick={addToCart}>
                   Add to Cart
                 </button>
