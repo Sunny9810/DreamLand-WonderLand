@@ -222,6 +222,7 @@ input:focus {
     width: 100%;
   }
 }
+
 /* custom fonts */
 @font-face {
   font-family: 'DreamLined';
@@ -280,4 +281,9 @@ input:focus {
   font-family: 'SquadaOne';
   src: local('SquadaOne'),
   url('./fonts/SquadaOne-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Dosis';
+  src: local('Dosis'),
+  url('./fonts/Dosis-VariableFont_wght.ttf') format('truetype');
 }

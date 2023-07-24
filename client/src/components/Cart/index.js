@@ -9,6 +9,7 @@ import Auth from "../../utils/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 import "./cart.css";
+import LilBear from '../../images/animals/CutieWave.png'
 
 const stripePromise = loadStripe("pk_test_TYooMQauvdEDq54NiTphI7jx");
 
@@ -17,8 +18,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   // create state from useSelector()
   const state = useSelector((s) => s);
+
+    //! productids are structured as the options in getcheckout
+    //! passed to this query and res.data is waited on
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
+    //! when the data exist/updates from the QUERYCHECKOUT response
+      //! the sessionid is extracted and helps redirect to the stripe checkout page
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -27,6 +33,8 @@ const Cart = () => {
     }
   }, [data]);
 
+    //! checks if state.cart has data and if not gets product data from 
+      //! indexDB, passes that data as the payload to the ADD_MULTIPLE_TO_CART action type
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise("cart", "get");
@@ -50,6 +58,8 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+    //! on submit all the item ids are psuhed into a productIDs array
+      //! passed into getcheckout and used as the options for QUERYCHECKOUT
   function submitCheckout() {
     const productIds = [];
 
@@ -67,12 +77,16 @@ const Cart = () => {
   if (!state.cartOpen) {
     return (
       <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
+        <span role="img" aria-label="trash" style={{ position: "relative", top: "-8px" }}>
           🛒
         </span>
       </div>
     );
   }
+
+  state.cart.forEach((item) => {
+    console.log(item);
+  });
 
   return (
     <div className="cart">
@@ -83,7 +97,7 @@ const Cart = () => {
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
+            <CartItem key={item.listing} item={item} />
           ))}
 
           <div className="flex-row space-between">
@@ -99,7 +113,7 @@ const Cart = () => {
       ) : (
         <h3>
           <span role="img" aria-label="shocked">
-            😱
+          <img style={{ height:100 , width:100 }} src={ LilBear} alt="little cartoon bear"/>
           </span>
           You haven't added anything to your cart yet!
         </h3>

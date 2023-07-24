@@ -2,7 +2,7 @@
 
 body {
     background-color: #9cabc9;
-   
+   font-size: 18px;
     font-family: "TsukimiRounded-Regular"; 
     color:#000e14;
   
@@ -109,6 +109,7 @@ body {
     text-align: center;
     border-radius: 10px;
     font-family: "TsukimiRounded-Bold"; 
+    font-size:larger;
     color: beige;
   
   }

@@ -60,7 +60,7 @@ function ProductList() {
       <div className="pg-header">
     
       <img style={{ height:200}} src={ DreamLogo} alt="dreamland wonderland logo"/>
-        <h2>Our Products:</h2>
+        <h2>Welcome!</h2>
         <div className="products-row">
         <Link to="/">
           <span role="img" aria-label="">
@@ -81,6 +81,7 @@ function ProductList() {
                 name={product.name}
                 price={product.price}
                 quantity={product.quantity}
+                description={product.description}
               />
             ))}
           </div>

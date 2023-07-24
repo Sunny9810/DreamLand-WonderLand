@@ -17,8 +17,6 @@ import {
     cartOpen: false,
     categories: [],
     currentCategory: "",
-    size: "",
-    quantity: 1
   };
   
   // The reducer is a function that accepts the current state and an action. It returns a new state based on that action.
@@ -31,19 +29,23 @@ import {
           products: [...action.products],
         };
   
+        //! takes the state.cart and spreads it, updating it with payload/data for the product(action.product), then returns the updated state with new cart
       case ADD_TO_CART:
         return {
           ...state,
           cartOpen: true,
           cart: [...state.cart, action.product],
         };
+
       case ADD_MULTIPLE_TO_CART:
         return {
           ...state,
           cart: [...state.cart, ...action.products],
         };
         
-        //! checks for item id and item size
+        //! checks the state.cart for a product that matches with the payload(action.id, action.size), 
+          //!spreads that product and updates the quantity with payload quantity
+            //! returns updated product to store cart
       case UPDATE_CART_QUANTITY:
         return {
           ...state,
