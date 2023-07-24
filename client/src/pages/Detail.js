@@ -41,8 +41,6 @@ function Detail() {
   };
 
 
-//  const [quantityVisable, setQuantityVisible] = useState(false)
-
   const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
@@ -93,7 +91,7 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize },
+        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing },
       });
       idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
     }
@@ -138,7 +136,7 @@ function Detail() {
     console.log(value);
     
 
-//    setQuantityVisible(!quantityVisable)
+
     setCurrentSize(value);
     setListing(`${value}-${currentProduct._id}`)
 
@@ -199,13 +197,11 @@ function Detail() {
                 <br />
                 <br />
                 <input
-//                  disabled={quantityVisable || cart.some((item) => item.listing === listing)}
                   type="number"
                   placeholder="1"
                   min = '1'
                   value = {quantity}
                   onChange={onChange}
-                  
                 />
                 <br />
                 <button className="d-btn"

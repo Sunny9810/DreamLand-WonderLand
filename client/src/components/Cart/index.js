@@ -68,8 +68,8 @@ const Cart = () => {
   if (!state.cartOpen) {
     return (
       <div className="cart-closed" onClick={toggleCart}>
-        <span role="img" aria-label="trash">
-          🛒
+        <span role="img" aria-label="trash" style={{ position: "relative", top: "-8px" }}>
+          🛍️
         </span>
       </div>
     );
@@ -84,7 +84,7 @@ const Cart = () => {
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
-            <CartItem key={item._id} item={item} />
+            <CartItem key={item.listing} item={item} />
           ))}
 
           <div className="flex-row space-between">

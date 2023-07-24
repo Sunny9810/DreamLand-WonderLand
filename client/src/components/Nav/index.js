@@ -1,57 +1,94 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Navbar, Nav as BootstrapNav, NavDropdown } from 'react-bootstrap';
 import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
+import Cart from "../Cart";
+import DreamLogo from '../../images/DreamLogo.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './nav.css';
 
-import DreamLogo from '../../images/DreamLogo.png'
-import 'bootstrap/dist/css/bootstrap.min.css'
-
-function Nav() {
-    //! the function below will render the conditionaly buttons for navigation whether the user is logged in or not
-  function showNavigation() {
-    if (Auth.loggedIn()) {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/orderHistory">Order History</Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      );
-    }
-  }
-    //! below is the nav bar that will always render containing the site title link and the logo , it calls the showNavigation function which conditinally renders nav buttons 
- 
+const NavLinks = () => {
+  if (Auth.loggedIn()) {
     return (
-      <header className="flex-row px-5">
-        <h1>
-          <Link to="/">
-            <span role="img" aria-label="">
-             <img style={{ height:100}} src={ DreamLogo} alt="dreamland wonderland logo"/>
-            </span>
-           
-          </Link>
-        </h1>
-    
-          <nav id="login">{showNavigation()}</nav>
-      
-      </header>
+      <NavDropdown title="Menu" id="collapsible-nav-dropdown" className="custom-nav-dropdown">
+        <BootstrapNav.Link as={Link} to="/orderHistory" className="custom-nav-link">
+          Order History
+        </BootstrapNav.Link>
+        <BootstrapNav.Link onClick={() => Auth.logout()} className="custom-nav-link">
+          Logout
+        </BootstrapNav.Link>
+      </NavDropdown>
+    );
+  } else {
+    return (
+      <>
+        <BootstrapNav.Link as={Link} to="/signup" className="custom-nav-link">
+          Signup
+        </BootstrapNav.Link>
+        <BootstrapNav.Link as={Link} to="/login" className="custom-nav-link">
+          Login
+        </BootstrapNav.Link>
+      </>
     );
   }
+}
+
+function Nav() {
+  const [showLogo, setShowLogo] = useState(false);
+  const [navbarExpanded, setNavbarExpanded] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setShowLogo(window.scrollY !== 0);
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    setNavbarExpanded(false);
+  }, [location]);
+
+  const navbarClass = showLogo ? 'custom-navbar navbar-expanded' : 'custom-navbar navbar-collapsed';
+  const logoClass = showLogo ? 'nav-logo navbar-logo-shown' : 'nav-logo navbar-logo-hidden';
+
+  // Reloads the page when clicking on the logo or heading and when on the home ('/') route
+  const handleLogoHeadingClick = () => {
+    if (location.pathname === '/') {
+      window.location.reload();
+    }
+  };
+
+  return (
+    <Navbar expand="lg" sticky="top" expanded={navbarExpanded} onToggle={() => setNavbarExpanded(!navbarExpanded)} className={navbarClass}>
+      <div className="container">
+        <Navbar.Brand>
+          {!showLogo && (
+            <h1 className="nav-heading" onClick={handleLogoHeadingClick}>
+              <a href="/" className="nav-heading-link">
+                DreamLand <span role="img" aria-label="zzz">💤</span> Wonderland
+              </a>
+            </h1>
+          )}
+          {showLogo && (
+            <a href="/" className="nav-heading-link" onClick={handleLogoHeadingClick}>
+              <img className={logoClass} src={DreamLogo} alt="dreamland wonderland logo" />
+            </a>
+          )}
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav" className="custom-navbar-collapse">
+          <div className="nav-menu nav-right">
+            <NavLinks />
+            <Cart />
+          </div>
+        </Navbar.Collapse>
+      </div>
+    </Navbar>
+  );
+}
 
 export default Nav;
