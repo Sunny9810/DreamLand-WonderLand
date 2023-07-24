@@ -24,22 +24,29 @@ function Detail() {
 
   const { id } = useParams();
 
+    //! local state holding product we want to add
   const [currentProduct, setCurrentProduct] = useState({ image: [] });
 
   const { loading, data } = useQuery(QUERY_PRODUCTS);
 
   const [currentImage, setCurrentImage] = useState(currentProduct.image[""]);
 
+    //! pulling state and deconstructing product and cart 
   const { products, cart } = state;
 
+    //! size chosen state value
   const [currentSize, setCurrentSize] = useState("");
 
+    //! unique value for identifying item in cart
   const [listing, setListing] = useState("");
 
+    //! quantity chosen state value
   const [quantity, setQuantity] = useState(1)
 
+    //! warning state string value
   const [warning, setWarning] = useState("");
 
+    //! checks if currentproduct matches any cart item and returns a boolean value
   const isCartItemMatch = (cartItem) => {
     return cartItem._id === currentProduct._id && cartItem.size === currentSize;
   };
@@ -73,22 +80,23 @@ function Detail() {
     }
   }, [products, data, loading, dispatch, id]);
 
+    //! function logic for adding to cart is button is clicked
   const addToCart = () => {
-
+      //! checks if currentsize exists, if no currentsize warning is given a string value, and appears in in hmtl further down
     if (!currentSize) {
       
       setWarning("Please select a size before adding to cart");
       return;
     }
-
+      //! if size warning is set to empty and doesnt appear
     setWarning("");
 
-      //!checks cart in global state for item existing by _id and size
+      //! looks for item existing in cart matching our size and id and assigns to itemInCart if found
     const itemInCart = cart.find(
       (cartItem) => cartItem._id === id && cartItem.size === currentSize
     );
       
-      //!
+      //! if itemInCart has data aka its in cart state then update its quantity
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,
@@ -96,6 +104,7 @@ function Detail() {
         size: currentSize,
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
+        //! i tried to mimic the structure of action above
       idbPromise("cart", "put", {
         ...itemInCart,
         _id: id,
@@ -103,6 +112,7 @@ function Detail() {
         purchaseQuantity: parseInt(itemInCart.purchaseQuantity) + quantity,
       });
     } else {
+        //! if no match to cart, add a product with our local state values to the store cart
       dispatch({
         type: ADD_TO_CART,
         product: {
@@ -111,12 +121,15 @@ function Detail() {
           size: currentSize,
           listing: listing,
         },
-      });
+      }); //! i tried to mimic the action above's structure
       idbPromise("cart", "put", {
         ...currentProduct,
         purchaseQuantity: quantity,
+        size: currentSize,
+        listing: listing,
       });
     }
+      //! reset quantity input form to 1
     setQuantity(1);
   };
 
@@ -132,30 +145,12 @@ function Detail() {
 
   const onChange = (e) => {
     const { value } = e.target;
-
     setQuantity(parseInt(value, 10));
+  };
+  
 
-    if (value === "0") {
-      dispatch({
-        type: REMOVE_FROM_CART,
-        _id: currentProduct._id,
-        size: currentSize,
-      });
-      idbPromise("cart", "delete", { ...currentProduct });
-    } else {
-      dispatch({
-        type: UPDATE_CART_QUANTITY,
-        _id: currentProduct._id,
-        size: currentSize,
-        purchaseQuantity: parseInt(value),
-      });
-      idbPromise("cart", "put", {
-        ...currentProduct,
-        _id: currentProduct._id,
-        size: currentSize,
-        purchaseQuantity: parseInt(value),
-      });
-    }
+  const isSizeSelected = (size) => {
+    return size === currentSize;
   };
 
   const onClick = (e) => {
@@ -165,13 +160,14 @@ function Detail() {
 
 
     setCurrentSize(value);
-    setListing(`${value}-${currentProduct._id}`)
+    const newListing = `${value}-${currentProduct._id}`;
+    setListing(newListing)
 
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
-      listing: listing
+      listing: newListing
     });
   };
   return (
@@ -216,7 +212,11 @@ function Detail() {
                 <br />
                 <label for="sizes">Sizes:  </label>
                 {currentProduct?.category?.size?.map((s) => (
-                  <button className="d-btn" id={s} onClick={onClick}>
+                  <button 
+                    className={`d-btn ${isSizeSelected(s) ? 'selected' : ''}`}
+                    id={s} 
+                    onClick={onClick}
+                    >
                     {s}
                   </button>
                 ))}

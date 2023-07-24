@@ -20,6 +20,11 @@ body {
   background-color: rgb(217, 235, 232); /*currently set to transparent opacity, but can be changed if necessary */
 }
 
+.selected {
+  background-color: #007bff; /* Change it according to your design */
+  color: #ffffff;
+}
+
 input {
   width: 10%;
   text-align: center;

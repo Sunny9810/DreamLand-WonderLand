@@ -28,6 +28,8 @@ const Cart = () => {
     }
   }, [data]);
 
+    //! checks if state.cart has data and if not gets product data from 
+      //! indexDB, passes that data as the payload to the ADD_MULTIPLE_TO_CART action type
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise("cart", "get");
@@ -74,6 +76,10 @@ const Cart = () => {
       </div>
     );
   }
+
+  state.cart.forEach((item) => {
+    console.log(item);
+  });
 
   return (
     <div className="cart">
