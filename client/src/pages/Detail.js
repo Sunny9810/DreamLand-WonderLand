@@ -14,7 +14,7 @@ import {
 import { QUERY_PRODUCTS } from "../utils/queries";
 import { idbPromise } from "../utils/helpers";
 import spinner from "../assets/spinner.gif";
-import './styles/details.css'
+import "./styles/details.css";
 
 function Detail() {
   // create disptach from useDispatch()
@@ -33,15 +33,14 @@ function Detail() {
   const { products, cart } = state;
 
   const [currentSize, setCurrentSize] = useState("");
-  
-  const [listing, setListing] = useState("")
+
+  const [listing, setListing] = useState("");
 
   const isCartItemMatch = (cartItem) => {
     return cartItem._id === currentProduct._id && cartItem.size === currentSize;
   };
 
-
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     // already in global store
@@ -91,9 +90,17 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProduct, purchaseQuantity: quantity, size: currentSize, listing: listing },
+        product: {
+          ...currentProduct,
+          purchaseQuantity: quantity,
+          size: currentSize,
+          listing: listing,
+        },
       });
-      idbPromise("cart", "put", { ...currentProduct, purchaseQuantity: quantity });
+      idbPromise("cart", "put", {
+        ...currentProduct,
+        purchaseQuantity: quantity,
+      });
     }
   };
 
@@ -101,7 +108,7 @@ function Detail() {
     dispatch({
       type: REMOVE_FROM_CART,
       _id: currentProduct._id,
-      size: currentSize
+      size: currentSize,
     });
 
     idbPromise("cart", "delete", { ...currentProduct });
@@ -134,51 +141,50 @@ function Detail() {
   const onClick = (e) => {
     const value = e.target.id;
     console.log(value);
-    
-
 
     setCurrentSize(value);
-    setListing(`${value}-${currentProduct._id}`)
-
+    setListing(`${value}-${currentProduct._id}`);
 
     idbPromise("cart", "put", {
       ...currentProduct,
       size: value,
-      listing: listing
+      listing: listing,
     });
   };
   return (
     <>
       {currentProduct && cart ? (
-        <div className="container" >
+        <div className="container">
           <div className="row product">
-            <div className="col">
-              
-            </div>
+            <div className="col"></div>
             <div className="card">
-            <div className="container d-flex back-link">
-              <Link to="/">← Back to Products</Link>
+              <div className="container d-flex back-link">
+                <Link to="/">← Back to Products</Link>
               </div>
-              <div className="container d-flex-col mx-auto p-2" >
-                <img className='mainimage' src={`/images/${currentImage}`} alt={currentImage} />
-                <div className="row d-inline-flex mx-auto images" style={{width: 200}} >
-                <div className="row d-inline-flex ">
-                <div className="col d-flex">
-                
-                {currentProduct.image.map((i) => (
-                  <img
-                    src={`/images/${i}`}
-                    alt={i}
-                    onClick={() => setCurrentImage(i)}
-                  />
-                ))}
-              
+              <div className="container d-flex-col mx-auto p-2">
+                <img
+                  className="mainimage"
+                  src={`/images/${currentImage}`}
+                  alt={currentImage}
+                />
+                <div
+                  className="row d-inline-flex mx-auto images"
+                  style={{ width: 200 }}
+                >
+                  {/* Remove the unnecessary nested div element */}
+                  {currentProduct.image.map((i) => (
+                    <img
+                      key={i} // Add a key attribute to each image
+                      src={`/images/${i}`}
+                      alt={i}
+                      onClick={() => setCurrentImage(i)}
+                      className="rounded-circle" // Add the class for the circular image
+                    />
+                  ))}
                 </div>
-                </div>
-              </div>
               </div>
 
-              <h2 >{currentProduct.name}</h2>
+              <h2>{currentProduct.name}</h2>
 
               <p className="d-flex-row my-0">{currentProduct.description}</p>
               <br />
@@ -191,31 +197,27 @@ function Detail() {
                   </button>
                 ))}
                 <br />
-                
                 <input
                   type="number"
                   placeholder="1"
-                  min = '1'
-                  value = {quantity}
+                  min="1"
+                  value={quantity}
                   onChange={onChange}
                 />
                 <br />
-               
-                <button className="d-btn"
-                onClick={addToCart}>Add to Cart</button>
-                
-                <button className="d-btn"
-                    //! disabled is false if the cart item matches currentProduct
-                    //! meaning it will display
+                <button className="d-btn" onClick={addToCart}>
+                  Add to Cart
+                </button>
+                <button
+                  className="d-btn"
+                  //! disabled is false if the cart item matches currentProduct
+                  //! meaning it will display
                   disabled={!cart.some(isCartItemMatch)}
                   onClick={removeFromCart}
                 >
                   Remove from Cart
                 </button>
-                
               </p>
-
-           
             </div>
           </div>
         </div>
