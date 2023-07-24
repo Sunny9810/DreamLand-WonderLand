@@ -159,10 +159,10 @@ function Detail() {
             <div className="container d-flex back-link">
               <Link to="/">← Back to Products</Link>
               </div>
-              <div className="container d-flex-col mx-auto" >
-                <img src={`/images/${currentImage}`} alt={currentImage} />
-                <div className="row d-flex-row d-mx-auto images" style={{width: 200}} >
-                <div className="row d-flex">
+              <div className="container d-flex-col mx-auto p-2" >
+                <img className='mainimage' src={`/images/${currentImage}`} alt={currentImage} />
+                <div className="row d-inline-flex mx-auto images" style={{width: 200}} >
+                <div className="row d-inline-flex ">
                 <div className="col d-flex">
                 
                 {currentProduct.image.map((i) => (
@@ -172,21 +172,17 @@ function Detail() {
                     onClick={() => setCurrentImage(i)}
                   />
                 ))}
-                {/* <img
-                  src={`/images/${currentProduct.image[0]}`}
-                  alt={currentProduct.image[0]}
-                />
-                ; */}
+              
                 </div>
                 </div>
               </div>
               </div>
 
-              <h2>{currentProduct.name}</h2>
+              <h2 >{currentProduct.name}</h2>
 
-              <p>{currentProduct.description}</p>
-
-              <p>
+              <p className="d-flex-row my-0">{currentProduct.description}</p>
+              <br />
+              <p className="d-flex-row">
                 <strong>Price:</strong>${currentProduct.price} <br />
                 <br />
                 {currentProduct?.category?.size?.map((s) => (
@@ -195,7 +191,7 @@ function Detail() {
                   </button>
                 ))}
                 <br />
-                <br />
+                
                 <input
                   type="number"
                   placeholder="1"
@@ -204,8 +200,10 @@ function Detail() {
                   onChange={onChange}
                 />
                 <br />
+               
                 <button className="d-btn"
                 onClick={addToCart}>Add to Cart</button>
+                
                 <button className="d-btn"
                     //! disabled is false if the cart item matches currentProduct
                     //! meaning it will display
@@ -214,12 +212,10 @@ function Detail() {
                 >
                   Remove from Cart
                 </button>
+                
               </p>
 
-              {/* <img
-                src={`/images/${currentProduct.image}`}
-                alt={currentProduct.name}
-              /> */}
+           
             </div>
           </div>
         </div>
