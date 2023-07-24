@@ -18,8 +18,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   // create state from useSelector()
   const state = useSelector((s) => s);
+
+    //! productids are structured as the options in getcheckout
+    //! passed to this query and res.data is waited on
   const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
+    //! when the data exist/updates from the QUERYCHECKOUT response
+      //! the sessionid is extracted and helps redirect to the stripe checkout page
   useEffect(() => {
     if (data) {
       stripePromise.then((res) => {
@@ -28,6 +33,8 @@ const Cart = () => {
     }
   }, [data]);
 
+    //! checks if state.cart has data and if not gets product data from 
+      //! indexDB, passes that data as the payload to the ADD_MULTIPLE_TO_CART action type
   useEffect(() => {
     async function getCart() {
       const cart = await idbPromise("cart", "get");
@@ -51,6 +58,8 @@ const Cart = () => {
     return sum.toFixed(2);
   }
 
+    //! on submit all the item ids are psuhed into a productIDs array
+      //! passed into getcheckout and used as the options for QUERYCHECKOUT
   function submitCheckout() {
     const productIds = [];
 
@@ -75,6 +84,10 @@ const Cart = () => {
     );
   }
 
+  state.cart.forEach((item) => {
+    console.log(item);
+  });
+
   return (
     <div className="cart">
       <div className="close" onClick={toggleCart}>
@@ -84,7 +97,6 @@ const Cart = () => {
       {state.cart.length ? (
         <div>
           {state.cart.map((item) => (
-            console.log(item),
             <CartItem key={item.listing} item={item} />
           ))}
 
