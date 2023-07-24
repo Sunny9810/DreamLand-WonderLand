@@ -31,6 +31,7 @@
 
 .input-field {
   width: 100%;
+  text-align: left;
   padding: 8px;
   border: 1px solid #4028c9;
   border-radius: 50px;
