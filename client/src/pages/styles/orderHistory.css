@@ -1,0 +1,8 @@
+
+.container.order-history {
+    background-color: rgba(250, 235, 215, 0.37);
+    max-width: 50%; /* Set the maximum width as per your preference */
+    margin: auto; /* This will center the container horizontally on the page */
+    border-radius: 20px;
+  }
+  
