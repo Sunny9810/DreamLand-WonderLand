@@ -17,7 +17,9 @@ db.once("open", async () => {
     { name: "Grownups", 
     size: ["XS", "S", "M", "L", "XL", "XXL"] },
 
+  ]);
   console.log("categories seeded");
+
 
   await Product.deleteMany();
 
