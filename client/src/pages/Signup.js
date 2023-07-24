@@ -44,8 +44,9 @@ function Signup(props) {
     <div className="container my-1">
       <Link to="/login" className="go-to-login-link">← Login</Link>
 
-      <h2 className="signup-heading">Signup</h2>
+      
       <form onSubmit={handleFormSubmit}>
+      <h2 className="signup-heading">Signup</h2>
         <div className="flex-row space-between my-2">
           <label htmlFor="firstName">First Name:</label>
           <input
