@@ -1,0 +1,66 @@
+/* .container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+  } */
+
+  form {
+    width: 500px;
+    padding: 50px;
+    background-color: rgb(91, 153, 171);
+  }
+  
+  .go-to-signup-link {
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color:rgb(20, 165, 201);
+    font-size: 28px;
+  }
+  
+  .login-heading {
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 10%;
+    color: rgb(233, 209, 158);
+  }
+
+  h2{
+    margin-left:90px;
+  }
+  
+ 
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #4028c9;
+    border-radius: 50px;
+  }
+  
+  .error-text {
+    color: #dc3545;
+    margin-top: 5px;
+  }
+
+  label{
+    color:#0056b3;
+    font-size: 20px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color:rgb(20, 165, 201);
+    border: 1px solid #4028c9;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+   
+  }
+  

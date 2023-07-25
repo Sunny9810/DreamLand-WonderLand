@@ -1,0 +1,64 @@
+.login{
+    text-align: center;
+    margin:1px;
+    padding-left: 1%;
+
+}
+
+h1{
+    text-align: left;
+    text-decoration: wavy;
+    margin-bottom: 20px;
+    padding-left: 10%;
+
+}
+
+/* .loagin-header{
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 1%;
+
+} */
+
+.sign-up{
+    text-align:center;
+    margin: 1px;
+    padding-left:1%;
+
+}
+
+.btn{
+    width:20%;
+    padding: 10px;
+    background-color:rgb(20, 165, 201);
+    border: 1px solid #4028c9;
+    border-radius: 50px;
+    cursor: pointer;
+
+}
+.btn:hover {
+    background-color: #0056b3;
+}
+.input{
+    width:50%;
+    padding: 5px;
+    margin:auto;
+    border: 1px solid #4028c9;
+    border-radius: 50px;
+}
+.lbtn{
+    width:20%;
+    padding: 10px;
+    background-color:rgb(20, 165, 201);
+    border: 1px solid #4028c9;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+
+.lbtn:hover {
+    background-color: #0056b3;
+}
+   
+
+

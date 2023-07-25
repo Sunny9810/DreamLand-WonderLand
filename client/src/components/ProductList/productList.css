@@ -1,0 +1,227 @@
+
+
+body {
+    background-color: #9cabc9;
+   font-size: 18px;
+    font-family: "TsukimiRounded-Regular"; 
+    color:#000e14;
+  
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  main {
+    background-color: rgba(27, 44, 70, 0.733);
+    padding: 2rem;
+    border-radius: 20px;
+  
+  
+  }
+  
+  main.content {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+    
+  }
+  
+  main .pg-header {
+    padding: 10px ;
+    margin-bottom: 10px;
+    background: rgba(0, 0, 0, 0.473);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgb(187, 195, 202);
+    
+
+    
+  
+  }
+  button {
+    border-radius: 20px;
+    margin-left: 10px;
+  }
+  /* Breadcrumb */
+  
+  .breadcrumb a {
+    color: antiquewhite;
+  
+  }
+  
+  @media all and (max-width: 991px) {
+    .breadcrumb.justify-content-end{
+      justify-content: flex-start;
+  
+    }
+  }
+ 
+  
+  .pg-header{
+    border-radius: 20px;
+    font-family: "TsukimiRounded-Regular"; 
+
+  }
+
+  .pg-header h2 {
+    border-radius: 20px;
+    font-family: "DreamLined"; 
+    font-size: 3rem;
+
+  }
+
+  .products-row .card .card-body {
+    background: rgba(128, 124, 124, 0.308);
+    border-radius: 20px;
+    }
+    
+  .products-row .col-lg-4  {
+    margin-bottom: 20px;
+    border-radius: 20px;
+  
+  }  
+  
+  
+  .products-row .card-text {
+    color:rgb(4, 33, 44);
+    font-size: 16px;
+    text-align: center;
+  
+  }
+  
+  
+  /* card styling */
+  
+  .card {
+    background-color: rgba(255, 255, 255, 0.329);
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px rgb(48, 48, 54);
+  
+  }
+  
+  .card .card-title {
+    margin-bottom: 5px;
+    background-color: rgba(240, 255, 255, 0.144);
+    text-align: center;
+    border-radius: 10px;
+    font-family: "TsukimiRounded-Bold"; 
+    font-size:larger;
+    color: beige;
+  
+  }
+  
+  .card .img-wrap {
+    height: 300px;
+    text-align: center;
+    border-bottom: 1px dotted rgba (0,0,0,.125);
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+  
+  }
+  
+  .card .img-wrap img {
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+  }
+  
+  .card .price {
+    font-family: "SquadaOne";
+    font-weight: 200;
+    font-size: 1.5rem;
+    color:#fafafa
+    
+    
+  }
+  
+  .card .button {
+    font-weight: 600;
+    border-radius: 20px;
+    
+  }
+  
+  /* single product */
+  
+  .single h2 {
+    text-transform: capitalize;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+  
+  }
+  
+  .single h2::after {
+    position: absolute;
+    content: " ";
+    width: 50px;
+    bottom: -6px;
+    height: 2px;
+    background-color: #282c34;
+    left: 0;
+  }
+  
+  
+  .single .btn-light {
+    font-weight: 300;
+    
+  
+  }
+  
+  .single .price {
+    font-size: 22px;
+  
+  }
+  
+  .single .price strong {
+    color: rgb(3, 37, 37);
+  }
+  
+  .App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: rgb(2, 2, 2);
+  }
+  
+  .App-link {
+    color: #000000;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  
+  
+  

@@ -1,0 +1,52 @@
+/* .container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+} */
+
+.go-to-login-link {
+  display: block;
+  margin-bottom: 20px;
+  text-decoration:none;
+  color:rgb(20, 165, 201);
+  font-size: 28px;
+}
+
+.signup-heading {
+  text-align:left;
+  margin-bottom: 20px;
+  color: rgb(233, 209, 158);
+  padding-left: 10%;
+}
+
+
+/* .label {
+  display: bold;
+  font-weight: bold;
+} */
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #4028c9;
+  border-radius: 50px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color:rgb(20, 165, 201);
+  color: rgb(233, 209, 158);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+  
