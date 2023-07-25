@@ -166,6 +166,7 @@ function Detail() {
 
     idbPromise("cart", "put", {
       ...currentProduct,
+      _id: id,
       size: value,
       listing: newListing
     });
