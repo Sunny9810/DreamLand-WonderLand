@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Navbar, Nav as BootstrapNav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav as BootstrapNav } from 'react-bootstrap';
 import Auth from "../../utils/auth";
 import Cart from "../Cart";
 import DreamLogo from '../../images/DreamLogo.png';
@@ -10,14 +10,14 @@ import './nav.css';
 const NavLinks = () => {
   if (Auth.loggedIn()) {
     return (
-      <NavDropdown title="Menu" id="collapsible-nav-dropdown" className="custom-nav-dropdown">
+      <>
         <BootstrapNav.Link as={Link} to="/orderHistory" className="custom-nav-link">
           Order History
         </BootstrapNav.Link>
         <BootstrapNav.Link onClick={() => Auth.logout()} className="custom-nav-link">
           Logout
         </BootstrapNav.Link>
-      </NavDropdown>
+      </>
     );
   } else {
     return (

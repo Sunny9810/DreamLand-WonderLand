@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLazyQuery } from "@apollo/client";
 import { QUERY_CHECKOUT } from "../../utils/queries";
@@ -107,16 +108,18 @@ const Cart = () => {
             {Auth.loggedIn() ? (
               <button onClick={submitCheckout}>Checkout</button>
             ) : (
-              <span className="checkout">(log in to check out)</span>
+              <span className="checkout">(<Link to="/login">log in to check out</Link>)</span>
             )}
           </div>
         </div>
       ) : (
-        <h3>
+        <h3 className="glow-text">
           <span role="img" aria-label="shocked">
           <img style={{ height:100 , width:100 }} src={ LilBear} alt="little cartoon bear"/>
           </span>
-          You haven't added anything to your cart yet!
+          <span>
+            Ohh Noo! No items yet!
+          </span>
         </h3>
       )}
     </div>

@@ -98,7 +98,7 @@ function Signup(props) {
         </div>
         {error ? (
           <div>
-            <p className="error-text">The provided credentials are incorrect</p>
+            <p className="error-text">Please fill all fields</p>
           </div>
         ) : null}
         <div className="flex-row flex-end">
