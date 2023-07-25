@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
+import './styles/orderHistory.css'
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -15,7 +16,8 @@ function OrderHistory() {
 
   return (
     <>
-      <div className="container my-1">
+    <main>
+      <div className="container order-history">
         <Link to="/">← Back to Products</Link>
 
         {user ? (
@@ -28,7 +30,7 @@ function OrderHistory() {
                 <h3>
                   {new Date(parseInt(order.purchaseDate)).toLocaleDateString()}
                 </h3>
-                <div className="flex-row">
+                <div className="flex-col">
                   {order.products.map(({ _id, image, name, price }, index) => (
                     <div key={index} className="card px-1 py-1">
                       <Link to={`/products/${_id}`}>
@@ -46,6 +48,7 @@ function OrderHistory() {
           </>
         ) : null}
       </div>
+      </main>
     </>
   );
 }
