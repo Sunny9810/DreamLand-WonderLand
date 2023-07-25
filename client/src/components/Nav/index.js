@@ -55,22 +55,21 @@ function Nav() {
   const navbarClass = showLogo ? 'custom-navbar navbar-expanded' : 'custom-navbar navbar-collapsed';
   const logoClass = showLogo ? 'nav-logo navbar-logo-shown' : 'nav-logo navbar-logo-hidden';
 
-
   return (
     <Navbar expand="lg" sticky="top" expanded={navbarExpanded} onToggle={() => setNavbarExpanded(!navbarExpanded)} className={navbarClass}>
       <div className="container">
         <Navbar.Brand>
           {!showLogo && (
             <h1 className="nav-heading">
-              <a href="/" className="nav-heading-link">
+              <Link to="/" className="nav-heading-link">
                 DreamLand <span role="img" aria-label="zzz">💤</span> Wonderland
-              </a>
+              </Link>
             </h1>
           )}
           {showLogo && (
-            <a href="/" className="nav-heading-link">
+            <Link to="/" className="nav-heading-link">
               <img className={logoClass} src={DreamLogo} alt="dreamland wonderland logo" />
-            </a>
+            </Link>
           )}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />

@@ -37,8 +37,9 @@ const Cart = () => {
       //! indexDB, passes that data as the payload to the ADD_MULTIPLE_TO_CART action type
   useEffect(() => {
     async function getCart() {
-      const cart = await idbPromise("cart", "get");
-      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+      const cartItems = await idbPromise("cart", "get");
+        console.log('iDB cart:', cartItems)
+      dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cartItems] });
     }
 
     if (!state.cart.length) {
